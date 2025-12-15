@@ -1,0 +1,116 @@
+player2;15/12/2025;08:52:36.000268;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe main.py player2 Wi-Fi 5670
+player2;15/12/2025;08:52:36.000268;DEBUG;main;Ingescape version: 40500 (protocol v5)
+player2;15/12/2025;08:52:36.000268;DEBUG;model_write;set input game_start to null string
+player2;15/12/2025;08:52:36.000268;DEBUG;model_write;set input game_update to null string
+player2;15/12/2025;08:52:36.000268;DEBUG;model_write;set input player_hand to null string
+player2;15/12/2025;08:52:36.000268;DEBUG;model_write;set input card_played to null string
+player2;15/12/2025;08:52:36.000270;DEBUG;model_write;set input accusation_result to null string
+player2;15/12/2025;08:52:36.000270;DEBUG;model_write;set input display_message to null string
+player2;15/12/2025;08:52:36.000275;DEBUG;model_write;set output player_move to null string
+player2;15/12/2025;08:52:36.000275;DEBUG;model_write;set output player_accuse to null string
+player2;15/12/2025;08:52:36.000294;INFO;igs_start_with_device;Starting with ip address 172.17.206.79 and port 5670 on device Wi-Fi
+player2;15/12/2025;08:52:36.000295;DEBUG;s_init_loop;loop init
+player2;15/12/2025;08:52:36.000481;DEBUG;s_run_loop;loop starting
+player2;15/12/2025;08:52:36.000568;DEBUG;s_manage_zyre_incoming;->game_engine has entered the network with peer id D25DE3ABF767FE49B1FE48710EF7CD27 and endpoint tcp://172.17.206.79:49154
+player2;15/12/2025;08:52:36.000568;DEBUG;s_manage_zyre_incoming;Handling headers for peer game_engine (D25DE3ABF767FE49B1FE48710EF7CD27)
+player2;15/12/2025;08:52:36.000569;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://D25DE3ABF767FE49B1FE48710EF7CD27
+player2;15/12/2025;08:52:36.000569;DEBUG;s_manage_zyre_incoming;	pid -> 6428
+player2;15/12/2025;08:52:36.000569;DEBUG;s_manage_zyre_incoming;	commandline -> C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe main.py game_engine Wi-Fi 5670
+player2;15/12/2025;08:52:36.000569;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+player2;15/12/2025;08:52:36.000569;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49152
+player2;15/12/2025;08:52:36.000570;DEBUG;s_manage_zyre_incoming;	logger -> 49153
+player2;15/12/2025;08:52:36.000570;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+player2;15/12/2025;08:52:36.000570;DEBUG;s_manage_zyre_incoming;	publisher -> 49152
+player2;15/12/2025;08:52:36.000570;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+player2;15/12/2025;08:52:36.000570;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49152 to subscribe to game_engine
+player2;15/12/2025;08:52:36.000572;DEBUG;s_manage_zyre_incoming;Subscription created for game_engine at tcp://127.0.0.1:49152 (ipc)
+player2;15/12/2025;08:52:36.000572;DEBUG;s_manage_zyre_incoming;+game_engine has joined INGESCAPE_PRIVATE
+player2;15/12/2025;08:52:36.000574;DEBUG;s_manage_zyre_incoming;+game_engine has joined game_engine-IGS-REPLAY
+player2;15/12/2025;08:52:36.000574;DEBUG;s_manage_zyre_incoming;+game_engine has joined game_engine-IGS
+player2;15/12/2025;08:52:36.000576;DEBUG;s_manage_zyre_incoming;registering agent 9BB0411DCD01824DB2523C9CD52C08C4(game_engine)
+player2;15/12/2025;08:52:36.000576;DEBUG;s_manage_zyre_incoming;store definition for remote agent game_engine(9BB0411DCD01824DB2523C9CD52C08C4)
+player2;15/12/2025;08:52:36.000577;DEBUG;s_manage_zyre_incoming;store mapping for agent game_engine(9BB0411DCD01824DB2523C9CD52C08C4)
+player2;15/12/2025;08:52:36.000580;DEBUG;s_manage_zyre_incoming;->player1 has entered the network with peer id F57E885334CA8B4B9F4C43552C6BCCCD and endpoint tcp://172.17.206.79:49157
+player2;15/12/2025;08:52:36.000580;DEBUG;s_manage_zyre_incoming;Handling headers for peer player1 (F57E885334CA8B4B9F4C43552C6BCCCD)
+player2;15/12/2025;08:52:36.000581;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://F57E885334CA8B4B9F4C43552C6BCCCD
+player2;15/12/2025;08:52:36.000581;DEBUG;s_manage_zyre_incoming;	pid -> 27928
+player2;15/12/2025;08:52:36.000581;DEBUG;s_manage_zyre_incoming;	commandline -> C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe main.py player1 Wi-Fi 5670
+player2;15/12/2025;08:52:36.000581;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+player2;15/12/2025;08:52:36.000581;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+player2;15/12/2025;08:52:36.000582;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+player2;15/12/2025;08:52:36.000582;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+player2;15/12/2025;08:52:36.000582;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+player2;15/12/2025;08:52:36.000582;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+player2;15/12/2025;08:52:36.000583;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to player1
+player2;15/12/2025;08:52:36.000585;DEBUG;s_manage_zyre_incoming;Subscription created for player1 at tcp://127.0.0.1:49153 (ipc)
+player2;15/12/2025;08:52:36.000585;DEBUG;s_manage_zyre_incoming;+player1 has joined INGESCAPE_PRIVATE
+player2;15/12/2025;08:52:36.000585;DEBUG;s_manage_zyre_incoming;+player1 has joined player1-IGS-REPLAY
+player2;15/12/2025;08:52:36.000587;DEBUG;s_manage_zyre_incoming;+player1 has joined player1-IGS
+player2;15/12/2025;08:52:36.000588;DEBUG;s_manage_zyre_incoming;registering agent D0D9C50D4673534684056B78E7988304(player1)
+player2;15/12/2025;08:52:36.000588;DEBUG;s_manage_zyre_incoming;store definition for remote agent player1(D0D9C50D4673534684056B78E7988304)
+player2;15/12/2025;08:52:36.000588;DEBUG;s_manage_zyre_incoming;store mapping for agent player1(D0D9C50D4673534684056B78E7988304)
+player2;15/12/2025;08:52:51.000196;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4921E1F181EA15429D5563D92C7B1525 and endpoint tcp://172.17.206.79:49163
+player2;15/12/2025;08:52:51.000197;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4921E1F181EA15429D5563D92C7B1525)
+player2;15/12/2025;08:52:51.000197;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4921E1F181EA15429D5563D92C7B1525
+player2;15/12/2025;08:52:51.000197;DEBUG;s_manage_zyre_incoming;	pid -> 8184
+player2;15/12/2025;08:52:51.000197;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" C:\Users\HP\Desktop\Whiteboard2.igssystem
+player2;15/12/2025;08:52:51.000197;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+player2;15/12/2025;08:52:51.000198;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+player2;15/12/2025;08:52:51.000198;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49155
+player2;15/12/2025;08:52:51.000198;DEBUG;s_manage_zyre_incoming;	logger -> 49162
+player2;15/12/2025;08:52:51.000199;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+player2;15/12/2025;08:52:51.000199;DEBUG;s_manage_zyre_incoming;	publisher -> 49161
+player2;15/12/2025;08:52:51.000199;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+player2;15/12/2025;08:52:51.000200;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49155 to subscribe to Ingescape Circle
+player2;15/12/2025;08:52:51.000204;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49155 (ipc)
+player2;15/12/2025;08:52:51.000205;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+player2;15/12/2025;08:52:51.000205;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+player2;15/12/2025;08:52:51.000206;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+player2;15/12/2025;08:52:51.000206;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+player2;15/12/2025;08:52:51.000208;DEBUG;s_manage_zyre_incoming;registering agent F83DD069EE69B443A5D73E908E6A7083(Ingescape Circle)
+player2;15/12/2025;08:52:51.000208;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(F83DD069EE69B443A5D73E908E6A7083)
+player2;15/12/2025;08:52:51.000211;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(F83DD069EE69B443A5D73E908E6A7083)
+player2;15/12/2025;08:52:51.000369;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined player2-IGS-CALLS
+player2;15/12/2025;08:52:51.000370;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined player2-IGS
+player2;15/12/2025;08:52:51.000482;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined player1-IGS-CALLS
+player2;15/12/2025;08:52:51.000483;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined player1-IGS
+player2;15/12/2025;08:52:52.000108;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+player2;15/12/2025;08:52:52.000109;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(F83DD069EE69B443A5D73E908E6A7083)
+player2;15/12/2025;08:52:52.000110;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(F83DD069EE69B443A5D73E908E6A7083) : new mapping will overwrite the previous one...
+player2;15/12/2025;08:52:52.000111;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(F83DD069EE69B443A5D73E908E6A7083)
+player2;15/12/2025;08:52:52.000293;DEBUG;s_manage_zyre_incoming;mapping already exists for agent game_engine(9BB0411DCD01824DB2523C9CD52C08C4) : new mapping will overwrite the previous one...
+player2;15/12/2025;08:52:52.000293;DEBUG;s_manage_zyre_incoming;store mapping for agent game_engine(9BB0411DCD01824DB2523C9CD52C08C4)
+player2;15/12/2025;08:53:00.000605;DEBUG;s_manage_zyre_incoming;<-game_engine (D25DE3ABF767FE49B1FE48710EF7CD27) exited
+player2;15/12/2025;08:53:00.000605;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent game_engine (9BB0411DCD01824DB2523C9CD52C08C4)
+player2;15/12/2025;08:53:00.000605;DEBUG;s_clean_and_free_zyre_peer;cleaning peer game_engine (D25DE3ABF767FE49B1FE48710EF7CD27)
+player2;15/12/2025;09:02:27.000997;DEBUG;s_manage_zyre_incoming;->game_client has entered the network with peer id 61B0A30B18497447BDA782F31CC6CB34 and endpoint tcp://172.17.206.79:49154
+player2;15/12/2025;09:02:27.000998;DEBUG;s_manage_zyre_incoming;Handling headers for peer game_client (61B0A30B18497447BDA782F31CC6CB34)
+player2;15/12/2025;09:02:27.000998;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://61B0A30B18497447BDA782F31CC6CB34
+player2;15/12/2025;09:02:27.000998;DEBUG;s_manage_zyre_incoming;	pid -> 14888
+player2;15/12/2025;09:02:27.000998;DEBUG;s_manage_zyre_incoming;	commandline -> C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe main.py game_client Wi-Fi 5670
+player2;15/12/2025;09:02:27.000998;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+player2;15/12/2025;09:02:27.000999;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49152
+player2;15/12/2025;09:02:27.000999;DEBUG;s_manage_zyre_incoming;	logger -> 49153
+player2;15/12/2025;09:02:27.000999;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+player2;15/12/2025;09:02:28.000000;DEBUG;s_manage_zyre_incoming;	publisher -> 49152
+player2;15/12/2025;09:02:28.000000;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+player2;15/12/2025;09:02:28.000000;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49152 to subscribe to game_client
+player2;15/12/2025;09:02:28.000003;DEBUG;s_manage_zyre_incoming;Subscription created for game_client at tcp://127.0.0.1:49152 (ipc)
+player2;15/12/2025;09:02:28.000003;DEBUG;s_manage_zyre_incoming;+game_client has joined INGESCAPE_PRIVATE
+player2;15/12/2025;09:02:28.000004;DEBUG;s_manage_zyre_incoming;+game_client has joined game_client-IGS-REPLAY
+player2;15/12/2025;09:02:28.000005;DEBUG;s_manage_zyre_incoming;+game_client has joined game_client-IGS
+player2;15/12/2025;09:02:28.000006;DEBUG;s_manage_zyre_incoming;registering agent 2F4AF03F2C3DB2408704C428C2B38F3E(game_client)
+player2;15/12/2025;09:02:28.000006;DEBUG;s_manage_zyre_incoming;store definition for remote agent game_client(2F4AF03F2C3DB2408704C428C2B38F3E)
+player2;15/12/2025;09:02:28.000007;DEBUG;s_manage_zyre_incoming;store mapping for agent game_client(2F4AF03F2C3DB2408704C428C2B38F3E)
+player2;15/12/2025;09:07:39.000001;DEBUG;s_manage_zyre_incoming;received STOP_PEER command from Ingescape Circle (4921E1F181EA15429D5563D92C7B1525)
+player2;15/12/2025;09:07:39.000002;DEBUG;s_run_loop;loop stopping...
+player2;15/12/2025;09:07:39.000002;DEBUG;s_run_loop;cleaning network stack...
+player2;15/12/2025;09:07:39.000014;DEBUG;s_run_loop;cleaning internall communication stack...
+player2;15/12/2025;09:07:39.000014;DEBUG;s_run_loop;cleaning network structures...
+player2;15/12/2025;09:07:39.000015;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent player1 (D0D9C50D4673534684056B78E7988304)
+player2;15/12/2025;09:07:39.000015;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent game_client (2F4AF03F2C3DB2408704C428C2B38F3E)
+player2;15/12/2025;09:07:39.000015;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (F83DD069EE69B443A5D73E908E6A7083)
+player2;15/12/2025;09:07:39.000016;DEBUG;s_clean_and_free_zyre_peer;cleaning peer game_client (61B0A30B18497447BDA782F31CC6CB34)
+player2;15/12/2025;09:07:39.000016;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (4921E1F181EA15429D5563D92C7B1525)
+player2;15/12/2025;09:07:39.000017;DEBUG;s_clean_and_free_zyre_peer;cleaning peer player1 (F57E885334CA8B4B9F4C43552C6BCCCD)
+player2;15/12/2025;09:07:39.000017;DEBUG;s_run_loop;loop stopped

@@ -1,0 +1,224 @@
+
+######################################################
+# Utilities functions for cppCommon.gsl 
+######################################################
+
+# global variables
+global.usePragmaInHeader = 0
+
+######################################################
+function createFolder(path)
+    dir = directory.open($(my.path:camel,lower), error_txt) ?
+
+    if !defined(dir)
+        directory.create($(my.path:camel,lower))
+        echo "creating folder : " + $(my.path:camel,lower) 
+        echo "error : " + error_txt
+    endif
+endfunction
+
+######################################################
+function getSourceFolder(packageName)
+    folder = global.uml_generationFolder
+    if defined(my.packageName) & string.length(my.packageName) > 0
+        folder += "/$(my.packageName:camel,lower)"
+    endif
+    return folder
+endfunction
+
+######################################################
+function isTrue(attr)
+    return defined(my.attr) & my.attr = "true"
+endfunction
+
+######################################################
+function defaultValueForProperty(property)
+    echo "defaultValueForProperty " + my.property.type
+    if (my.property.type = "bool")
+        defaultValue = "false"
+    elsif (my.property.type = "int" | my.property.type = "double" | my.property.type = "float" | my.property.type = "qreal")
+        defaultValue = "0"
+    #ends with * => nullptr
+    elsif (defined(string.locate(my.property.type, "*")))
+        defaultValue = "nullptr"
+    else
+        defaultValue = "$(my.property.type: pascal) {}"
+    endif
+    return defaultValue
+endfunction
+
+######################################################
+function hasQProperty(class)
+    return count(my.class.property, (property.macro = "QT_CPP" | property.macro = "QML")) > 0
+endfunction
+
+######################################################
+function hasMacro(class)
+    return count(my.class.property, property.macro <> "QT_CPP") > 0
+endfunction
+
+######################################################
+function countMember(class, access, isInCpp)
+    memberCount = 0     
+    memberCount += count(my.class.constructor, constructor.access = my.access)
+    memberCount += count(my.class.destructor, destructor.access = my.access)
+    memberCount += count(my.class.function, function.access = my.access)
+
+    if !my.isInCpp
+        memberCount += count(my.class.attribute, attribute.access = my.access)
+    endif
+    return memberCount
+endfunction
+
+######################################################
+function hasPublicMember(class, isInCpp)
+    memberCount = countMember(my.class, "public", my.isInCpp)
+    memberCount += count(my.class.property, (property.macro="QT_CPP" | property.macro="QML"))
+
+    return (memberCount > 0) | isSingleton(my.class)
+endfunction
+
+######################################################
+function hasProtectedMember(class, isInCpp)
+    memberCount = countMember(my.class, "protected", my.isInCpp)
+    memberCount += count(my.class.property, (property.macro = "QT_CPP" & isTrue(property.readOnly)))
+    return (memberCount > 0)
+endfunction
+
+######################################################
+function hasPrivateMember(class, isInCpp)
+    return isInCpp ?? (countMember(my.class, "private", my.isInCpp) > 0) ? (countMember(my.class, "private", my.isInCpp) > 0 | hasQProperty(my.class))
+endfunction
+
+######################################################
+function hasPublicAttribute(class)
+    return (count(my.class.attribute, attribute.access = "public") > 0)
+endfunction
+
+######################################################
+function hasProtectedAttribute(class)
+    return (count(my.class.attribute, attribute.access = "protected") > 0)
+endfunction
+
+######################################################
+function hasPrivateAttribute(class)
+    return (count(my.class.attribute, attribute.access = "private") > 0)
+endfunction
+
+######################################################
+function hasPublicSlot(class)  
+    return (count(my.class.slot, slot.access = "public") > 0)
+endfunction
+
+######################################################
+function hasProtectedSlot(class)
+    return (count(my.class.slot, slot.access = "protected") > 0)
+endfunction
+
+######################################################
+function hasPrivateSlot(class)
+    return (count(my.class.slot, slot.access = "private") > 0)
+endfunction
+
+######################################################
+function hasSignal(class)
+    return (count(my.class.signal) > 0) | count(my.class.property, property.macro = "QT_CPP" | property.macro = "QML") > 0
+endfunction
+
+######################################################
+function isClassType(name)
+    return regexp.match("(^[A-Z].+)", my.name)
+endfunction
+
+######################################################
+function isSingleton(class)
+    return (isTrue(my.class.isSingleton) | isTrue(my.class.isQMLSingleton))
+endfunction
+
+######################################################
+function isQmlSingleton(class)
+    return (isTrue(my.class.isQMLSingleton))
+endfunction
+
+######################################################
+function isPointerType(name)
+    return regexp.match("(\\w+[ ]?\\*$)", my.name)
+endfunction
+
+######################################################
+function isListType(name)
+    return regexp.match("^Q?List(<.+>)", my.name)
+endfunction
+
+
+######################################################
+function isI2Enum(package, type)
+    return count(my.package.enum, (enum.name = my.type & enum.macro = "ENUM_I2") ) > 0
+endfunction
+
+######################################################
+function isPropertyAttribute(name, class)
+    return count(my.class.property, (property.name = my.name)) > 0
+endfunction
+
+######################################################
+function isPrivateAttribute(name, class)
+    return count(my.class.attribute, (attribute.name = my.name & attribute.access = "private")) > 0 | isPropertyAttribute(my.name, my.class)
+endfunction
+
+######################################################
+function isPublicAttribute(name, class)
+    return count(my.class.attribute, (attribute.name = my.name & attribute.access = "public")) > 0
+endfunction
+
+######################################################
+function retrieveListUsedType(name)
+    if regexp.match("^List<(.+)[*]?>", my.name, token)
+        return token
+    else 
+        echo "[Warning][retrieveListUsedType()] Unable to find type used into list element. Valid syntax is \"List<Class>\", {type: $(my.name)}"
+        return ""
+    endif
+endfunction
+
+######################################################
+function convertIfListType(name, isQt)
+    convertedType = my.name
+    if regexp.match("^List(<.+>)", my.name, token)
+        if my.isQt 
+            convertedType = "Q$(my.name)"
+        else 
+            convertedType = "std::vector$(token)"
+        endif 
+    endif
+    return convertedType
+endfunction
+
+######################################################
+function isQtFrameworkClassType(name)
+    return regexp.match("(^[Q][A-Z].+)", my.name)
+endfunction
+
+
+######################################################
+function isStandardClassType(name)
+    return regexp.match("(std::)", my.name)
+endfunction
+
+######################################################
+function extractStandardClassNameFromType(name)
+    className = ""
+    if regexp.match("std::(\\w+)", my.name, token)
+        className = token
+    endif
+    return className
+endfunction
+
+######################################################
+function extractClassNameFromType(type)
+    className = ""
+    if regexp.match("[.*]?[ ]?(([A-Z]\\w+)|(std::\\w+))[ ]?[&]?", my.type, token)  # [.*]?[ ]?([A-Z]\\w+)[ ]?[&]?
+        className = token
+    endif
+    return className
+endfunction

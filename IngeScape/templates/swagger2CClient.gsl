@@ -1,0 +1,2271 @@
+.# > name="1 - Swagger C client"
+.# > keyword="Swagger"
+.# > description="Swagger in c"
+.# > swaggerMode="ONE_OR_MORE"
+.# > agentMode="ZERO"
+
+.template 0
+if !defined(projects)
+  abort "Error: can't find <projects> root tag, {file: $(gsl.filename)}."
+endif
+
+function isContentTypeString (contentType)
+    if content.type <> "application/xml" & content.type <> "application/json" & content.type <> "text/css" & content.type <> "text/csv" & content.type <> "text/html" & content.type <> "text/plain" & content.type <> "text/xml"
+        return 0
+    endif
+    return 1
+endfunction isContentTypeString
+
+function isResponseOnlyString (method)
+    isText = 1
+    for method.response as response
+        for response.content as content
+            if isContentTypeString(content.type) ?= 0
+                isText = 0
+            endif
+        endfor
+    endfor
+    return isText
+endfunction isResponseOnlyString
+.endtemplate
+
+.template 1
+.for projects. as project
+.for project. as swaggers where name(swaggers) = "swaggers"
+.
+.####################################################################################
+.echo "Creating directories structure ..."
+.directory.create("builds/cmake")
+.directory.create("dependencies")
+.directory.create("packaging/windows")
+.directory.create("packaging/unix")
+.directory.create("src")
+.
+.####################################################################################
+.echo "Generating builds/cmake/IdentifyOS.cmake ..."
+.output "builds/cmake/IdentifyOS.cmake"
+set(CMAKE_OS_NAME ${CMAKE_SYSTEM_NAME})
+set(CMAKE_OS_VERSION ${CMAKE_SYSTEM_VERSION})
+
+if (UNIX)
+    if (APPLE)
+        set (CMAKE_OS_NAME "OSX" CACHE STRING "Operating system name" FORCE)
+        execute_process(COMMAND sw_vers -productVersion OUTPUT_VARIABLE CMAKE_OS_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
+    else (APPLE)
+        ## Check for Debian GNU/Linux _______________
+        find_file (DEBIAN_FOUND debian_version debconf.conf PATHS /etc)
+        if (DEBIAN_FOUND)
+            set (CMAKE_OS_NAME "Debian" CACHE STRING "Operating system name" FORCE)
+            file (STRINGS "/etc/debian_version" CMAKE_OS_VERSION)
+            string (REGEX REPLACE "([0-9]+)(\\\\.[0-9]+)*" "\\\\1" CMAKE_OS_VERSION "${CMAKE_OS_VERSION}")
+
+            ## Extra check for Ubuntu _______________
+            find_file (UBUNTU_EXTRA legal issue PATHS /etc)
+            if (UBUNTU_EXTRA)
+                ## Scan contents of file
+                file (STRINGS ${UBUNTU_EXTRA} UBUNTU_FOUND REGEX Ubuntu)
+                ## Check result of string search
+                if (UBUNTU_FOUND)
+                    set (CMAKE_OS_NAME "Ubuntu" CACHE STRING "Operating system name" FORCE)
+                    set (DEBIAN_FOUND FALSE)
+                endif (UBUNTU_FOUND)
+            endif (UBUNTU_EXTRA)
+        endif (DEBIAN_FOUND)
+
+        ## Check for Fedora _________________________
+        find_file (FEDORA_FOUND fedora-release PATHS /etc)
+        if (FEDORA_FOUND)
+            set (CMAKE_OS_NAME "Fedora" CACHE STRING "Operating system name" FORCE)
+        endif (FEDORA_FOUND)
+
+        ## Check for RedHat _________________________
+        find_file (REDHAT_FOUND redhat-release inittab.RH PATHS /etc)
+        if (REDHAT_FOUND)
+            set (CMAKE_OS_NAME "RedHat" CACHE STRING "Operating system name" FORCE)
+
+            ## Extra check for CentOS _______________
+            ## Scan contents of file
+            file (STRINGS ${REDHAT_FOUND} CENTOS_FOUND REGEX "CentOS .* ([0-9]+)(\\.[0-9]+)*")
+            ## Check result of string search
+            if (CENTOS_FOUND)
+                set (CMAKE_OS_NAME "CentOS" CACHE STRING "Operating system name" FORCE)
+                string (REGEX REPLACE "CentOS .* ([0-9]+)(\\.[0-9]+)+.*" "\\1" CMAKE_OS_VERSION "${CENTOS_FOUND}")
+                set (REDHAT_FOUND FALSE)
+            endif (CENTOS_FOUND)
+        endif (REDHAT_FOUND)
+    endif (APPLE)
+endif (UNIX)
+
+message(STATUS "- OS Name     ${CMAKE_OS_NAME}")
+message(STATUS "- OS Version  ${CMAKE_OS_VERSION}")
+
+.for swaggers. as server
+.####################################################################################
+.echo "Generating src/$(server.name:Camel).h ..."
+.output "src/$(server.name:Camel).h"
+//
+//  $(server.name:Camel).h
+//  $(project.name:c)
+//  Created by $(project.author:no)
+//
+//  $(project.copyright:no)
+//
+
+#ifndef $(server.name:Camel)_h
+#define $(server.name:Camel)_h
+
+#include <stdbool.h>
+#include <stddef.h>
+
+.if count(server.url)
+.for server.url as url
+.if first()
+#define $(server.name:c,UPPER)_DEFAULT_URL "$(url.url)"
+.endif
+.endfor
+.else
+#define $(server.name:c,UPPER)_DEFAULT_URL "http://localhost:8080"
+.endif
+
+//constructor and destructor
+typedef struct _$(server.name:c)_t $(server.name:c)_t;
+$(server.name:c)_t *$(server.name:Camel)_new(const char *url, int requestTimeout, const char *login, const char *password, bool insecure);
+void $(server.name:Camel)_destroy ($(server.name:c)_t **client);
+
+//response prototype
+typedef void (*$(server.name:Camel)_reply_fn)(const char *callerAgentUUID, const char *token, int responseCode, void *body, size_t size);
+
+//requests
+.for server.path as path
+.for path.method as method
+void $(server.name:Camel)_$(path.name:no)$(method.type:UPPER)($(server.name:c)_t *client, \
+.for method.path_parameter as pathParam
+const char *path_$(pathParam.name:Camel), \
+.endfor
+.for method.query_parameter as queryParam
+const char *query_$(queryParam.name:Camel), \
+.endfor
+.
+.if count(method.body)
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+char *form_$(property.name:c), \
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+const char *body, \
+.else
+void *body, \
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.endif
+.
+$(server.name:Camel)_reply_fn replyCb, const char * callerAgentUUID, const char * token);
+.endfor
+.endfor
+
+#endif /* $(server.name:Camel)_h */
+
+.####################################################################################
+.echo "Generating src/$(server.name:Camel).c ..."
+.output "src/$(server.name:Camel).c"
+//
+//  $(server.name:Camel).c
+//  $(project.name:c)
+//  Created by $(project.author:no)
+//
+//  $(project.copyright:no)
+//
+
+#include "$(server.name:Camel).h"
+
+#include <curl/curl.h>
+#include <ingescape/ingescape.h>
+
+#include <assert.h>
+#include <stdlib.h>
+#include <string.h>
+
+//  Mutex macros
+#if defined (__WINDOWS__)
+typedef CRITICAL_SECTION mutex_t;
+#   define $(server.name:c,UPPER)_MUTEX_INIT(m) InitializeCriticalSection (&(m))
+#   define $(server.name:c,UPPER)_MUTEX_LOCK(m) EnterCriticalSection (&(m))
+#   define $(server.name:c,UPPER)_MUTEX_UNLOCK(m) LeaveCriticalSection (&(m))
+#   define $(server.name:c,UPPER)_MUTEX_DESTROY(m) DeleteCriticalSection (&(m))
+#else
+#include <pthread.h>
+
+typedef pthread_mutex_t mutex_t;
+#   define $(server.name:c,UPPER)_MUTEX_INIT(m) pthread_mutex_init (&(m), NULL)
+#   define $(server.name:c,UPPER)_MUTEX_LOCK(m) pthread_mutex_lock (&(m))
+#   define $(server.name:c,UPPER)_MUTEX_UNLOCK(m) pthread_mutex_unlock (&(m))
+#   define $(server.name:c,UPPER)_MUTEX_DESTROY(m) pthread_mutex_destroy (&(m))
+#endif
+
+.for server.path as path
+.for path.method as method
+.for method.header_parameter as headerParam
+.
+.headerValue = ""
+.for headerParam.schema as schema
+.if defined(schema.default)
+.headerValue = schema.default
+.endif
+.endfor
+#define $(server.name:c,UPPER)_$(path.name:c,UPPER)_$(method.type:UPPER)_$(headerParam.name:c,UPPER) "$(headerParam.name): $(headerValue)"
+.endfor
+.endfor
+.endfor
+
+static bool $(server.name:Camel)_verbose = false;
+
+struct _$(server.name:c)_t{
+    CURL *curl;
+    const char *url;
+    int timeout;
+};
+
+typedef struct{
+    char* data;
+    size_t size;
+} curlBuffer_t;
+
+mutex_t curl_mutex;
+bool $(server.name:Camel)_curl_mutex_initialized = false;
+
+void $(server.name:Camel)_curl_lock(void){
+    if (!$(server.name:Camel)_curl_mutex_initialized){
+        $(server.name:c,UPPER)_MUTEX_INIT(curl_mutex);
+        $(server.name:Camel)_curl_mutex_initialized = true;
+    }
+    $(server.name:c,UPPER)_MUTEX_LOCK(curl_mutex);
+}
+
+void $(server.name:Camel)_curl_unlock(void){
+    assert($(server.name:Camel)_curl_mutex_initialized);
+    $(server.name:c,UPPER)_MUTEX_UNLOCK(curl_mutex);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////
+// CURL internal functions and callbacks
+//
+size_t $(server.name:Camel)_curl_write_cb(void *contents, size_t size, size_t nmemb, void *args){
+    curlBuffer_t *buffer = *((curlBuffer_t**)args);
+    if (buffer){
+        size_t sizeToCopy = size * nmemb;
+        size_t newSize;
+        if (buffer->size == 0){
+            buffer->data = calloc(1, sizeToCopy + 1);
+            newSize = sizeToCopy;
+        }else{
+            newSize = buffer->size + sizeToCopy;
+            buffer->data = realloc(buffer->data, newSize + 1);
+        }
+        memcpy(buffer->data + buffer->size, contents, sizeToCopy);
+        buffer->data[newSize] = '\\0';
+        buffer->size = newSize;
+        return sizeToCopy;
+    }else
+        igs_error("Received buffer is null");
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// CONSTRUCTOR AND DESTRUCTOR
+//
+$(server.name:c)_t *$(server.name:Camel)_new (const char *url, int requestTimeout, const char *login, const char *password, bool insecure){
+    assert(url);
+    $(server.name:c)_t *client = calloc(1, sizeof($(server.name:c)_t));
+
+    client->curl = curl_easy_init();
+    if (client->curl == NULL){
+        igs_error("Failed to init CURL");
+        free(client);
+        return NULL;
+    }
+    curl_easy_setopt(client->curl, CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(client->curl, CURLOPT_WRITEFUNCTION, $(server.name:Camel)_curl_write_cb);
+
+    if (login && (strlen(login) > 0))
+        curl_easy_setopt(client->curl, CURLOPT_USERNAME, login);
+    if (password && (strlen(password) > 0))
+        curl_easy_setopt(client->curl, CURLOPT_PASSWORD, password);
+
+    if (insecure){
+        // Disable SSL checks
+        curl_easy_setopt(client->curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        curl_easy_setopt(client->curl, CURLOPT_SSL_VERIFYHOST, 0L);
+        curl_easy_setopt(client->curl, CURLOPT_SSL_VERIFYSTATUS, 0);
+    }
+
+    client->url = url;
+    client->timeout = requestTimeout;
+    return client;
+}
+
+void $(server.name:Camel)_destroy($(server.name:c)_t **client){
+    assert(client);
+    assert(*client);
+    if ((*client)->curl)
+        curl_easy_cleanup((*client)->curl);
+    free(*client);
+    *client = NULL;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// REQUESTS
+//
+.for server.path as path
+// $(path.name)
+.for path.method as method
+void $(server.name:Camel)_$(path.name:no)$(method.type:UPPER)($(server.name:c)_t *client, \
+.for method.path_parameter as pathParam
+const char *path_$(pathParam.name:Camel), \
+.endfor
+.for method.query_parameter as queryParam
+const char *query_$(queryParam.name:Camel), \
+.endfor
+.
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+char *form_$(property.name:c), \
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+const char *body, \
+.else
+void *body, \
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.
+$(server.name:Camel)_reply_fn replyCb, const char * callerAgentUUID, const char * token){
+    assert(client);
+    assert(client->url);
+.for method.path_parameter as pathParam
+    assert(path_$(pathParam.name:Camel));
+.endfor
+.for method.query_parameter as queryParam
+    assert(query_$(queryParam.name:Camel));
+.endfor
+.if count(method.body)
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+    assert(form_$(property.name:c));
+.endfor
+.endif
+.endfor
+.
+.else
+    assert(body);
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.endif
+    assert(replyCb);
+.if count(method.query_parameter) | count(method.path_parameter)
+    size_t url_length = strlen(client->url);
+.
+.endpointWithoutPathParameters = path.endpoint
+.for method.path_parameter as pathParam
+.endpointWithoutPathParameters = string.search_replace(endpointWithoutPathParameters, "{" + pathParam.name + "}", "")
+.endfor
+.
+    size_t endpoint_length = strlen("$(endpointWithoutPathParameters)");
+    char * url = calloc(1, url_length
+                        + endpoint_length
+.for method.path_parameter as pathParam
+                        + strlen(path_$(pathParam.name:Camel))
+.endfor
+.
+.cpt = 0
+.for method.query_parameter as queryParam
+                        + strlen("\
+.if cpt ?= 0
+?\
+.else
+&\
+.endif
+$(queryParam.name)=") + strlen(query_$(queryParam.name:Camel))
+.cpt = cpt + 1
+.endfor
+                        + 1);
+.
+.endpointTemplate = path.endpoint
+.for method.path_parameter as pathParam
+.endpointTemplate = string.search_replace(endpointTemplate, "{" + pathParam.name + "}", "%s")
+.endfor
+.
+    sprintf(url, "%s$(endpointTemplate)\
+.cpt = 0
+.for method.query_parameter as queryParam
+.if cpt ?= 0
+?\
+.else
+&\
+.endif
+$(queryParam.name)=%s\
+.cpt = cpt + 1
+.endfor
+", client->url\
+.for method.path_parameter as pathParam
+, path_$(pathParam.name:Camel)\
+.endfor
+.for method.query_parameter as queryParam
+, query_$(queryParam.name:Camel)\
+.endfor
+);
+.else
+    size_t url_length = strlen(client->url);
+    const char *endpoint_template = "$(path.endpoint)";
+    size_t endpoint_length = strlen(endpoint_template);
+    url_length += endpoint_length;
+
+    char *url = calloc(1, url_length + 1);
+    char *endpoint = strdup("$(path.endpoint)");
+    sprintf(url, "%s%s", client->url, endpoint);
+    free(endpoint);
+.endif
+
+    $(server.name:Camel)_curl_lock();
+    curlBuffer_t *buffer = calloc(1, sizeof(curlBuffer_t));
+    assert(buffer);
+    curl_easy_setopt(client->curl, CURLOPT_URL, url);
+.isMultiform = 0
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.isMultiform = 1
+    struct curl_httppost *formpost = NULL;
+    struct curl_httppost *lastptr = NULL;
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+.for property.schema as p_schema
+.if p_schema.format ?= "binary"
+    curl_formadd(&formpost, &lastptr, CURLFORM_COPYNAME, "$(property.name:no)", CURLFORM_FILE, form_$(property.name:c), CURLFORM_END);
+.else
+    curl_formadd(&formpost, &lastptr, CURLFORM_COPYNAME, "$(property.name:no)", CURLFORM_COPYCONTENTS, form_$(property.name:c), CURLFORM_END);
+.endif
+.endfor
+.endfor
+.endif
+.endfor
+.
+.else
+    curl_easy_setopt(client->curl, CURLOPT_POSTFIELDS, body);
+.if !isContentTypeString(content.type)
+    curl_easy_setopt(client->curl, CURLOPT_POSTFIELDSIZE, sizeof(body));
+.endif
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.
+.if method.type ?= "get"
+    curl_easy_setopt(client->curl, CURLOPT_HTTPGET, 1L);
+.elsif method.type ?= "post"
+.if isMultiform
+    curl_easy_setopt(client->curl, CURLOPT_HTTPPOST, formpost);
+.else
+    curl_easy_setopt(client->curl, CURLOPT_POST, 1L);
+.endif
+.elsif method.type ?= "put"
+    curl_easy_setopt(client->curl, CURLOPT_CUSTOMREQUEST, "PUT");
+.elsif method.type ?= "delete"
+    curl_easy_setopt(client->curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+.elsif method.type ?= "patch"
+    curl_easy_setopt(client->curl, CURLOPT_CUSTOMREQUEST, "PATCH");
+.endif
+    curl_easy_setopt(client->curl, CURLOPT_WRITEDATA, &buffer);
+    curl_easy_setopt(client->curl, CURLOPT_TIMEOUT, client->timeout);
+.
+
+    //HTTP headers
+    struct curl_slist *headers = NULL;
+.for method.body as body
+.if first()
+.if count(body.content) ?= 1
+.for body.content as content
+    headers = curl_slist_append(headers, "Content-Type: $(content.type)");
+.endfor
+.else
+    // FIXME: handle content type of the request
+.endif
+.endif
+.endfor
+.for method.header_parameter as headerParam
+    headers = curl_slist_append(headers, $(server.name:c,UPPER)_$(path.name:c,UPPER)_$(method.type:UPPER)_$(headerParam.name:c,UPPER));
+.endfor
+    curl_easy_setopt(client->curl, CURLOPT_HTTPHEADER, headers);
+
+    CURLcode res = curl_easy_perform(client->curl);
+    long response_code = 0;
+    if (res != CURLE_OK){
+        igs_error("Request $(method.type:UPPER) ERROR %s => %s\
+.if count(method.body)
+ | Data : \
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+'$(property.name:no)':%s\
+.if !last()
+,\
+.endif
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+%s\
+.else
+size %zu\
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.endif
+", curl_easy_strerror(res), url\
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+, form_$(property.name:c)\
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+, body\
+.else
+, sizeof(body)\
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+);
+        response_code = 503;
+    }else{
+        curl_easy_getinfo(client->curl, CURLINFO_RESPONSE_CODE, &response_code);
+        if ($(server.name:Camel)_verbose){
+            if (response_code == 200 || response_code == 201 || response_code == 202)
+                igs_info("Request $(method.type:UPPER) SUCCESS %ld : \
+.if isResponseOnlyString(method)
+%s\
+.else
+size %zu\
+.endif
+ => %s\
+.if count(method.body)
+ | Data : \
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+'$(property.name:no)':%s\
+.if !last()
+,\
+.endif
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+%s\
+.else
+size %zu\
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.endif
+"\
+, response_code\
+.if isResponseOnlyString(method)
+, (char *)buffer->data\
+.else
+, buffer->size\
+.endif
+, url\
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+, form_$(property.name:c)\
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+, body\
+.else
+, sizeof(body)\
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+);
+            else
+                igs_info("Request $(method.type:UPPER) ERROR %ld : \
+.if isResponseOnlyString(method)
+%s\
+.else
+size %zu\
+.endif
+    => %s\
+.if count(method.body)
+    | Data : \
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+'$(property.name:no)':%s\
+.if !last()
+,\
+.endif
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+%s\
+.else
+size %zu\
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.endif
+", response_code\
+.if isResponseOnlyString(method)
+, (char *)buffer->data\
+.else
+, buffer->size\
+.endif
+, url\
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+, form_$(property.name:c)\
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+, body\
+.else
+, sizeof(body)\
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+);
+        }
+    }
+    curl_slist_free_all(headers);
+    free(url);
+.if method.type ?= "get"
+    curl_easy_setopt(client->curl, CURLOPT_HTTPGET, 0);
+.elsif method.type ?= "post"
+.if isMultiform
+    curl_easy_setopt(client->curl, CURLOPT_HTTPPOST, 0);
+    curl_formfree(formpost);
+.else
+    curl_easy_setopt(client->curl, CURLOPT_POST, 0);
+.endif
+.elsif method.type ?= "put" | method.type ?= "delete"
+    curl_easy_setopt(client->curl, CURLOPT_CUSTOMREQUEST, 0);
+.endif
+    $(server.name:Camel)_curl_unlock();
+    replyCb(callerAgentUUID, token, (int)response_code, buffer->data, buffer->size);
+    if (buffer->data)
+        free(buffer->data);
+    free(buffer);
+}
+
+.endfor
+.endfor
+.endfor
+.
+.####################################################################################
+.echo "Generating src/main.c ..."
+.output "src/main.c"
+//
+//  main.c
+//  $(project.name:c)
+//  Created by $(project.author:no)
+//
+//  $(project.copyright:no)
+//
+
+#if defined(__unix__) || defined(__linux__) || (defined(__APPLE__) && defined(__MACH__))
+    #include <pthread.h>
+#elif (defined WIN32 || defined _WIN32)
+    #ifndef WIN32_LEAN_AND_MEAN
+        #define WIN32_LEAN_AND_MEAN
+    #endif
+    #define NOMINMAX
+    #include <windows.h>
+    #include <winsock2.h>
+#endif
+
+#include <curl/curl.h>
+#include <getopt.h>
+#include <ingescape/ingescape.h>
+.for swaggers. as server
+#include "$(server.name:Camel).h"
+.endfor
+
+//default agent parameters to be overriden by command line parameters
+#define PORT 5670
+#define AGENT_NAME "$(project.name:Camel)"
+#define DEVICE NULL
+#define IS_VERBOSE false
+#define DEFAULT_REQUEST_TIMEOUT 10
+
+int ingescapeSentMessage(zloop_t *loop, zsock_t *reader, void *arg){
+    char *message = NULL;
+    zsock_recv(reader, "s", &message);
+    if (streq(message, "LOOP_STOPPED")){
+        igs_info("LOOP_STOPPED received from Ingescape");
+        return -1;
+    }else
+        return 0;
+}
+
+.for swaggers. as server
+.for server.path as path
+// $(server.name:no) $(path.name:no) services & replies
+.for path.method as method
+.isText = isResponseOnlyString(method)
+.
+void $(server.name:c)_$(path.name:no)_$(method.type:lower)_reply(const char *callerAgentNameOrUUID, const char *token, int responseCode, void *body, size_t size){
+    assert(callerAgentNameOrUUID);
+    igs_service_arg_t *args = NULL;
+    igs_service_args_add_int(&args, responseCode);
+.if isText
+    igs_service_args_add_string(&args, (char *)body);
+.else
+    igs_service_args_add_data(&args, body, size);
+.endif
+    igs_service_call(callerAgentNameOrUUID, "$(path.name:no)_$(method.type:lower)_rep", &args, token);
+}
+
+void $(server.name:c)_$(path.name:no)_$(method.type:lower)_service(const char *callerAgentName, const char *callerAgentUUID, const char *serviceName, igs_service_arg_t *firstArgument, size_t nbArgs, const char *token, void* myData){
+    $(server.name:c)_t *client = ($(server.name:c)_t *)myData;
+.cpt = 0
+.argumentPrefix = "firstArgument"
+.for method.path_parameter as pathParam
+    char *path_$(pathParam.name:Camel) = $(argumentPrefix)->c;
+.argumentPrefix = argumentPrefix + "->next"
+.endfor
+.for method.query_parameter as queryParam
+    char *query_$(queryParam.name:Camel) = $(argumentPrefix)->c;
+.argumentPrefix = argumentPrefix + "->next"
+.endfor
+.
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+.for property.schema as p_schema
+    char *form_$(property.name:c) = $(argumentPrefix)->c;
+.argumentPrefix = argumentPrefix + "->next"
+.endfor
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+    char *body = $(argumentPrefix)->c;
+.else
+    void *body = $(argumentPrefix)->data;
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.
+
+    $(server.name:Camel)_$(path.name:no)$(method.type:UPPER)(client, \
+.for method.path_parameter as pathParam
+path_$(pathParam.name:Camel), \
+.endfor
+.for method.query_parameter as queryParam
+query_$(queryParam.name:Camel), \
+.endfor
+.
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+form_$(property.name:c), \
+.endfor
+.endif
+.endfor
+.
+.else
+body, \
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+.
+$(server.name:c)_$(path.name:no)_$(method.type:lower)_reply, callerAgentUUID, token);
+}
+
+.endfor
+.endfor
+.endfor
+///////////////////////////////////////////////////////////////////////////////
+// COMMAND LINE AND INTERPRETER OPTIONS
+//
+void print_usage(void){
+    printf("Usage examples:\\n");
+    printf("    ./$(project.name:no) --verbose --device en0 --port 5670\\n");
+    printf("\\nIngescape parameters:\\n");
+    printf("--verbose : enable verbose mode in the application (default is disabled)\\n");
+    printf("--device device_name : name of the network device to be used (useful if several devices are available)\\n");
+    printf("--port port_number : port used for autodiscovery between agents (default: %d)\\n", PORT);
+    printf("--name agent_name : published name of this agent (default: %s)\\n", AGENT_NAME);
+    printf("--interactiveloop : enables interactive loop to pass commands in CLI (default: false)\\n");
+    printf("Security:\\n");
+    printf("--igsCert filePath : path to a private certificate used to connect to a secure platform\\n");
+    printf("--publicCerts directoryPath : path to a directory providing public certificates usable by ingescape\\n");
+    printf("\\nHTTP parameters:\\n");
+.for swaggers. as server
+    printf("--$(server.name:Camel)Url : $(server.name:Camel) server url used for HTTP request (default: %s)\\n", $(server.name:c,UPPER)_DEFAULT_URL);
+.endfor
+    printf("--timeout : request timeout in seconds (default: %d)\\n", DEFAULT_REQUEST_TIMEOUT);
+    printf("\\nHTTP Security options:\\n");
+    printf("--login username : user name to use in HTTP authentication\\n");
+    printf("--password password : password to use in HTTP authentication\\n");
+    printf("--insecure : disable SSL checks\\n");
+    printf("\\n");
+}
+
+//resolve paths starting with ~ to absolute paths
+void resolveUserPathIn(char path[], size_t maxSize) {
+    if (path && strlen(path) && path[0] == '~') {
+        char *temp = strdup(path+1);
+#ifdef _WIN32
+        char *home = getenv("USERPROFILE");
+#else
+        char *home = getenv("HOME");
+#endif
+        if (!home)
+            igs_error("could not find path for home directory");
+        else{
+            strncpy(path, home, maxSize);
+            strncat(path, temp, maxSize);
+        }
+        free(temp);
+    }
+}
+
+void print_cli_usage(void) {
+    printf("Available commands in the terminal:\\n");
+    printf("\t/quit : quits the agent\\n");
+    printf("\t/help : displays this message\\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// MAIN
+//
+int main(int argc, const char * argv[]) {
+    int opt = 0;
+    bool verbose = IS_VERBOSE;
+    char *networkDevice = DEVICE;
+    unsigned int port = PORT;
+    char *agentName = AGENT_NAME;
+    bool interactiveloop = false;
+    char igsCertPath[IGS_MAX_PATH_LENGTH] = "";
+    char publicCertsDir[IGS_MAX_PATH_LENGTH] = "";
+.for swaggers. as server
+    char $(server.name:Camel)Url[4096] = $(server.name:c,UPPER)_DEFAULT_URL;
+.endfor
+    int requestTimeout = DEFAULT_REQUEST_TIMEOUT;
+    char *login = NULL;
+    char *password = NULL;
+    bool insecure = false;
+
+    static struct option long_options[] = {
+        {"verbose",     no_argument, 0,  'v' },
+        {"device",      required_argument, 0,  'd' },
+        {"port",        required_argument, 0,  'p' },
+        {"name",        required_argument, 0,  'n' },
+        {"interactiveloop", no_argument, 0,  'i' },
+        {"help",        no_argument, 0,  'h' },
+        {"igsCert",        required_argument, 0,  'c' },
+        {"publicCerts",        required_argument, 0,  's' },
+        {"login",        required_argument, 0,  'l' },
+        {"password",        required_argument, 0,  'w' },
+        {"insecure",        no_argument, 0,  'z' },
+.cpt = 0
+.for swaggers. as server
+        {"$(server.name:Camel)Url", required_argument, 0, '$(cpt)'},
+.cpt = cpt + 1
+.endfor
+        {"timeout", required_argument, 0, 't'},
+        {0, 0, 0, 0}
+    };
+
+    int long_index = 0;
+    while ((opt = getopt_long(argc, (char *const *)argv, "p", long_options, &long_index)) != -1) {
+        switch (opt) {
+            case 'v':
+                verbose = true;
+                break;
+            case 'd':
+                networkDevice = optarg;
+                break;
+            case 'p':
+                port = (unsigned int)atoi(optarg);
+                break;
+            case 'n':
+                agentName = optarg;
+                break;
+            case 'i':
+                interactiveloop = true;
+                break;
+            case 'h':
+                print_usage();
+                exit(IGS_SUCCESS);
+            case 'c':
+                strncpy(igsCertPath, optarg, IGS_MAX_PATH_LENGTH);
+                break;
+            case 's':
+                strncpy(publicCertsDir, optarg, IGS_MAX_PATH_LENGTH);
+                break;
+.cpt = 0
+.for swaggers. as server
+            case '$(cpt)':
+                strncpy($(server.name:Camel)Url, optarg, 4096);
+                break;
+.cpt = cpt + 1
+.endfor
+            case 't':
+                requestTimeout = (long)atoi(optarg);;
+                break;
+            case 'l':
+                login = strdup(optarg);
+                break;
+            case 'w':
+                password = strdup(optarg);
+                break;
+            case 'z':
+                insecure = true;
+                break;
+            default:
+//                print_usage();
+//                exit(IGS_FAILURE);
+                break;
+        }
+    }
+
+    igs_agent_set_name(agentName);
+    igs_log_set_console(verbose);
+    igs_log_set_file(true, NULL);
+    igs_log_set_stream(verbose);
+    igs_definition_set_version("1.0");
+    igs_set_command_line_from_args(argc, argv);
+
+    //security
+    resolveUserPathIn(igsCertPath, IGS_MAX_PATH_LENGTH);
+    if (strlen(igsCertPath) && zfile_exists(igsCertPath))
+        assert(igs_enable_security(igsCertPath, publicCertsDir) == IGS_SUCCESS);
+    else if (strlen(igsCertPath)){
+        igs_error("Could not find Ingescape certificate file '%s': exiting", igsCertPath);
+        exit(IGS_FAILURE);
+    }
+
+    if (networkDevice == NULL){
+        //we have no device to start with: try to find one
+        int nbD = 0;
+        int nbA = 0;
+        char **devices = igs_net_devices_list(&nbD);
+        char **addresses = igs_net_addresses_list(&nbA);
+        assert(nbD == nbA);
+        if (nbD == 1){
+            //we have exactly one compliant network device available: we use it
+            networkDevice = strdup(devices[0]);
+            igs_info("using %s as default network device (this is the only one available)", networkDevice);
+        }else if (nbD == 2 && (strcmp(addresses[0], "127.0.0.1") == 0 || strcmp(addresses[1], "127.0.0.1") == 0)){
+            //we have two devices, one of which is the loopback
+            //pick the device that is NOT the loopback
+            if (strcmp(addresses[0], "127.0.0.1") == 0){
+                networkDevice = strdup(devices[1]);
+            }else{
+                networkDevice = strdup(devices[0]);
+            }
+            igs_info("using %s as default network device (this is the only one available that is not the loopback)", networkDevice);
+        }else{
+            if (nbD == 0){
+                igs_error("No network device found: aborting.");
+            }else{
+                igs_error("No network device passed as command line parameter and several are available.");
+                printf("Please use one of these network devices:\\n");
+                for (int i = 0; i < nbD; i++){
+                    printf("\t%s\\n", devices[i]);
+                }
+                printf("\\n");
+                print_usage();
+            }
+            exit(1);
+        }
+        igs_free_net_devices_list(devices, nbD);
+        igs_free_net_addresses_list(addresses, nbD);
+    }
+
+    //initialize clients
+    curl_global_init(CURL_GLOBAL_ALL);
+.for swaggers. as server
+    $(server.name:c)_t *$(server.name:Camel)_client = $(server.name:Camel)_new($(server.name:Camel)Url, requestTimeout, login, password, insecure);
+.for server.path as path
+.for path.method as method
+    igs_service_init("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", $(server.name:c)_$(path.name:no)_$(method.type:lower)_service, $(server.name:Camel)_client);
+.for method.path_parameter as pathParam
+    igs_service_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "$(pathParam.name)", IGS_STRING_T);
+.endfor
+.for method.query_parameter as queryParam
+    igs_service_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "$(queryParam.name)", IGS_STRING_T);
+.endfor
+.
+.
+.
+.for method.body as body
+.if first()
+.for body.content as content
+.if first()
+.
+.if content.type ?= "multipart/form-data"
+.
+.for content.schema as schema
+.if schema.type ?= "object"
+.for schema.property as property
+    igs_service_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "$(property.name)", IGS_STRING_T);
+.endfor
+.endif
+.endfor
+.
+.elsif isContentTypeString(content.type)
+    igs_service_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "body", IGS_STRING_T);
+.else
+    igs_service_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "body", IGS_DATA_T);
+.endif
+.
+.endif
+.endfor
+.endif
+.endfor
+    igs_service_reply_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "$(path.name:no)_$(method.type:lower)_rep");
+    igs_service_reply_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "$(path.name:no)_$(method.type:lower)_rep", "httpCode", IGS_INTEGER_T);
+.isText = isResponseOnlyString(method)
+.if isText
+    igs_service_reply_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "$(path.name:no)_$(method.type:lower)_rep", "body", IGS_STRING_T);
+.else
+    igs_service_reply_arg_add("$(server.name:Camel)_$(path.name:no)_$(method.type:lower)", "$(path.name:no)_$(method.type:lower)_rep", "body", IGS_DATA_T);
+.endif
+.endfor
+.endfor
+
+.endfor
+
+    //actually start ingescape
+    igs_start_with_device(networkDevice, port);
+
+    //mainloop management (two modes)
+    if (!interactiveloop) {
+        //Run the main loop (non-interactive mode):
+        //we rely on CZMQ which is an ingescape dependency
+        //and is thus always available.
+        zloop_t *loop = zloop_new();
+        zsock_t *pipe = igs_pipe_to_ingescape();
+        if (pipe)
+            zloop_reader(loop, pipe, ingescapeSentMessage, NULL);
+        zloop_start(loop);
+        zloop_destroy(&loop);
+    }else{
+        char message[IGS_MAX_LOG_LENGTH];
+        char command[IGS_MAX_LOG_LENGTH];
+        char param1[IGS_MAX_LOG_LENGTH];
+        char param2[IGS_MAX_LOG_LENGTH];
+        int usedChar = 0;
+        print_cli_usage();
+        while (igs_is_started()) {
+            if (!fgets(message, IGS_MAX_LOG_LENGTH, stdin))
+                break;
+            if ((message[0] == '/') && (strlen(message) > 2)) {
+                int matches = sscanf(message + 1, "%s %s%n%s", command, param1, &usedChar, param2);
+                if (matches > 2) {
+                    // copy the remaining of the message in param 2
+                    strncpy(param2, message + usedChar + 2, IGS_MAX_LOG_LENGTH);
+                    // remove '\\n' at the end
+                    param2[strnlen(param2, IGS_MAX_LOG_LENGTH) - 1] = '\\0';
+                }
+                // Process command
+                if (matches == -1) {
+                    //printf("Error: could not interpret message %s\\n", message + 1);
+                }else if (matches == 1) {
+                    if (strncmp(command, "quit", IGS_MAX_LOG_LENGTH) == 0){
+                        break;
+                    }else if(strncmp(command, "help", IGS_MAX_LOG_LENGTH) == 0){
+                        print_cli_usage();
+                    }else {
+                        printf("Received command: %s\\n", command);
+                    }
+                }else if (matches == 2) {
+                    printf("Received command: %s + %s\\n", command, param1);
+                }else if (matches == 3) {
+                    printf("Received command: %s + %s + %s\\n", command, param1, param2);
+                }else{
+                    printf("Error: message returned %d matches (%s)\\n", matches, message);
+                }
+            }
+        }
+    }
+.for swaggers. as server
+    $(server.name:Camel)_destroy(&$(server.name:Camel)_client);
+.endfor
+    igs_stop();
+    curl_global_cleanup();
+
+    if (login)
+        free(login);
+    if (password)
+        free(password);
+
+    return 0;
+}
+
+.
+.####################################################################################
+.echo "Generating packaging/windows/getopt.h ..."
+.output "packaging/windows/getopt.h"
+#ifndef __GETOPT_H__
+/**
+ * DISCLAIMER
+ * This file is part of the mingw-w64 runtime package.
+ *
+ * The mingw-w64 runtime package and its code is distributed in the hope that it
+ * will be useful but WITHOUT ANY WARRANTY.  ALL WARRANTIES, EXPRESSED OR
+ * IMPLIED ARE HEREBY DISCLAIMED.  This includes but is not limited to
+ * warranties of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+ /*
+ * Copyright (c) 2002 Todd C. Miller <Todd.Miller@courtesan.com>
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ *
+ * Sponsored in part by the Defense Advanced Research Projects
+ * Agency (DARPA) and Air Force Research Laboratory, Air Force
+ * Materiel Command, USAF, under agreement number F39502-99-1-0512.
+ */
+/*-
+ * Copyright (c) 2000 The NetBSD Foundation, Inc.
+ * All rights reserved.
+ *
+ * This code is derived from software contributed to The NetBSD Foundation
+ * by Dieter Baron and Thomas Klausner.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#pragma warning(disable:4996)
+
+#define __GETOPT_H__
+
+/* All the headers include this file. */
+#include <crtdefs.h>
+#include <errno.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <windows.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define    REPLACE_GETOPT        /* use this getopt as the system getopt(3) */
+
+#ifdef REPLACE_GETOPT
+int    opterr = 1;        /* if error message should be printed */
+int    optind = 1;        /* index into parent argv vector */
+int    optopt = '?';        /* character checked for validity */
+#undef    optreset        /* see getopt.h */
+#define    optreset        __mingw_optreset
+int    optreset;        /* reset getopt */
+char    *optarg;        /* argument associated with option */
+#endif
+
+//extern int optind;        /* index of first non-option in argv      */
+//extern int optopt;        /* single option character, as parsed     */
+//extern int opterr;        /* flag to enable built-in diagnostics... */
+//                /* (user may set to zero, to suppress)    */
+//
+//extern char *optarg;        /* pointer to argument of current option  */
+
+#define PRINT_ERROR    ((opterr) && (*options != ':'))
+
+#define FLAG_PERMUTE    0x01    /* permute non-options to the end of argv */
+#define FLAG_ALLARGS    0x02    /* treat non-options as args to option "-1" */
+#define FLAG_LONGONLY    0x04    /* operate as getopt_long_only */
+
+/* return values */
+#define    BADCH        (int)'?'
+#define    BADARG        ((*options == ':') ? (int)':' : (int)'?')
+#define    INORDER     (int)1
+
+#ifndef __CYGWIN__
+#define __progname __argv[0]
+#else
+extern char __declspec(dllimport) *__progname;
+#endif
+
+#ifdef __CYGWIN__
+static char EMSG[] = "";
+#else
+#define    EMSG        ""
+#endif
+
+struct option        /* specification for a long form option...    */
+{
+  const char *name;        /* option name, without leading hyphens */
+  int         has_arg;        /* does it take an argument?        */
+  int        *flag;        /* where to save its status, or NULL    */
+  int         val;        /* its associated status value        */
+};
+
+static int getopt_internal(int, char * const *, const char *,
+                           const struct option *, int *, int);
+static int parse_long_options(char * const *, const char *,
+                              const struct option *, int *, int);
+static int gcd(int, int);
+static void permute_args(int, int, int, char * const *);
+
+static char *place = EMSG; /* option letter processing */
+
+/* XXX: set optreset to 1 rather than these two */
+static int nonopt_start = -1; /* first non option argument (for permute) */
+static int nonopt_end = -1;   /* first option after non options (for permute) */
+
+/* Error messages */
+static const char recargchar[] = "option requires an argument -- %c";
+static const char recargstring[] = "option requires an argument -- %s";
+static const char ambig[] = "ambiguous option -- %.*s";
+static const char noarg[] = "option doesn't take an argument -- %.*s";
+static const char illoptchar[] = "unknown option -- %c";
+static const char illoptstring[] = "unknown option -- %s";
+
+static void
+_vwarnx(const char *fmt,va_list ap)
+{
+  (void)fprintf(stderr,"%s: ",__progname);
+  if (fmt != NULL)
+    (void)vfprintf(stderr,fmt,ap);
+  (void)fprintf(stderr,"\\n");
+}
+
+static void
+warnx(const char *fmt,...)
+{
+  va_list ap;
+  va_start(ap,fmt);
+  _vwarnx(fmt,ap);
+  va_end(ap);
+}
+
+/*
+ * Compute the greatest common divisor of a and b.
+ */
+static int
+gcd(int a, int b)
+{
+        int c;
+
+        c = a % b;
+        while (c != 0) {
+                a = b;
+                b = c;
+                c = a % b;
+        }
+
+        return (b);
+}
+
+/*
+ * Exchange the block from nonopt_start to nonopt_end with the block
+ * from nonopt_end to opt_end (keeping the same order of arguments
+ * in each block).
+ */
+static void
+permute_args(int panonopt_start, int panonopt_end, int opt_end,
+        char * const *nargv)
+{
+        int cstart, cyclelen, i, j, ncycle, nnonopts, nopts, pos;
+        char *swap;
+
+        /*
+         * compute lengths of blocks and number and size of cycles
+         */
+        nnonopts = panonopt_end - panonopt_start;
+        nopts = opt_end - panonopt_end;
+        ncycle = gcd(nnonopts, nopts);
+        cyclelen = (opt_end - panonopt_start) / ncycle;
+
+        for (i = 0; i < ncycle; i++) {
+                cstart = panonopt_end+i;
+                pos = cstart;
+                for (j = 0; j < cyclelen; j++) {
+                        if (pos >= panonopt_end)
+                                pos -= nnonopts;
+                        else
+                                pos += nopts;
+                        swap = nargv[pos];
+                        /* LINTED const cast */
+                        ((char **) nargv)[pos] = nargv[cstart];
+                        /* LINTED const cast */
+                        ((char **)nargv)[cstart] = swap;
+                }
+        }
+}
+
+#ifdef REPLACE_GETOPT
+/*
+ * getopt --
+ *    Parse argc/argv argument vector.
+ *
+ * [eventually this will replace the BSD getopt]
+ */
+int
+getopt(int nargc, char * const *nargv, const char *options)
+{
+
+        /*
+         * We don't pass FLAG_PERMUTE to getopt_internal() since
+         * the BSD getopt(3) (unlike GNU) has never done this.
+         *
+         * Furthermore, since many privileged programs call getopt()
+         * before dropping privileges it makes sense to keep things
+         * as simple (and bug-free) as possible.
+         */
+        return (getopt_internal(nargc, nargv, options, NULL, NULL, 0));
+}
+#endif /* REPLACE_GETOPT */
+
+//extern int getopt(int nargc, char * const *nargv, const char *options);
+
+#ifdef _BSD_SOURCE
+/*
+ * BSD adds the non-standard `optreset' feature, for reinitialisation
+ * of `getopt' parsing.  We support this feature, for applications which
+ * proclaim their BSD heritage, before including this header; however,
+ * to maintain portability, developers are advised to avoid it.
+ */
+# define optreset  __mingw_optreset
+extern int optreset;
+#endif
+#ifdef __cplusplus
+}
+#endif
+/*
+ * POSIX requires the `getopt' API to be specified in `unistd.h';
+ * thus, `unistd.h' includes this header.  However, we do not want
+ * to expose the `getopt_long' or `getopt_long_only' APIs, when
+ * included in this manner.  Thus, close the standard __GETOPT_H__
+ * declarations block, and open an additional __GETOPT_LONG_H__
+ * specific block, only when *not* __UNISTD_H_SOURCED__, in which
+ * to declare the extended API.
+ */
+#endif /* !defined(__GETOPT_H__) */
+
+#if !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__)
+#define __GETOPT_LONG_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+enum            /* permitted values for its `has_arg' field...    */
+{
+  no_argument = 0,          /* option never takes an argument    */
+  required_argument,        /* option always requires an argument    */
+  optional_argument        /* option may take an argument        */
+};
+
+/*
+ * parse_long_options --
+ *    Parse long options in argc/argv argument vector.
+ * Returns -1 if short_too is set and the option does not match long_options.
+ */
+static int
+parse_long_options(char * const *nargv, const char *options,
+        const struct option *long_options, int *idx, int short_too)
+{
+        char *current_argv, *has_equal;
+        size_t current_argv_len;
+        int i, ambiguous, match;
+
+#define IDENTICAL_INTERPRETATION(_x, _y)                                \
+        (long_options[(_x)].has_arg == long_options[(_y)].has_arg &&    \
+         long_options[(_x)].flag == long_options[(_y)].flag &&          \
+         long_options[(_x)].val == long_options[(_y)].val)
+
+        current_argv = place;
+        match = -1;
+        ambiguous = 0;
+
+        optind++;
+
+        if ((has_equal = strchr(current_argv, '=')) != NULL) {
+                /* argument found (--option=arg) */
+                current_argv_len = has_equal - current_argv;
+                has_equal++;
+        } else
+                current_argv_len = strlen(current_argv);
+
+        for (i = 0; long_options[i].name; i++) {
+                /* find matching long option */
+                if (strncmp(current_argv, long_options[i].name,
+                    current_argv_len))
+                        continue;
+
+                if (strlen(long_options[i].name) == current_argv_len) {
+                        /* exact match */
+                        match = i;
+                        ambiguous = 0;
+                        break;
+                }
+                /*
+                 * If this is a known short option, don't allow
+                 * a partial match of a single character.
+                 */
+                if (short_too && current_argv_len == 1)
+                        continue;
+
+                if (match == -1)    /* partial match */
+                        match = i;
+                else if (!IDENTICAL_INTERPRETATION(i, match))
+                        ambiguous = 1;
+        }
+        if (ambiguous) {
+                /* ambiguous abbreviation */
+                if (PRINT_ERROR)
+                        warnx(ambig, (int)current_argv_len,
+                             current_argv);
+                optopt = 0;
+                return (BADCH);
+        }
+        if (match != -1) {        /* option found */
+                if (long_options[match].has_arg == no_argument
+                    && has_equal) {
+                        if (PRINT_ERROR)
+                                warnx(noarg, (int)current_argv_len,
+                                     current_argv);
+                        /*
+                         * XXX: GNU sets optopt to val regardless of flag
+                         */
+                        if (long_options[match].flag == NULL)
+                                optopt = long_options[match].val;
+                        else
+                                optopt = 0;
+                        return (BADARG);
+                }
+                if (long_options[match].has_arg == required_argument ||
+                    long_options[match].has_arg == optional_argument) {
+                        if (has_equal)
+                                optarg = has_equal;
+                        else if (long_options[match].has_arg ==
+                            required_argument) {
+                                /*
+                                 * optional argument doesn't use next nargv
+                                 */
+                                optarg = nargv[optind++];
+                        }
+                }
+                if ((long_options[match].has_arg == required_argument)
+                    && (optarg == NULL)) {
+                        /*
+                         * Missing argument; leading ':' indicates no error
+                         * should be generated.
+                         */
+                        if (PRINT_ERROR)
+                                warnx(recargstring,
+                                    current_argv);
+                        /*
+                         * XXX: GNU sets optopt to val regardless of flag
+                         */
+                        if (long_options[match].flag == NULL)
+                                optopt = long_options[match].val;
+                        else
+                                optopt = 0;
+                        --optind;
+                        return (BADARG);
+                }
+        } else {            /* unknown option */
+                if (short_too) {
+                        --optind;
+                        return (-1);
+                }
+                if (PRINT_ERROR)
+                        warnx(illoptstring, current_argv);
+                optopt = 0;
+                return (BADCH);
+        }
+        if (idx)
+                *idx = match;
+        if (long_options[match].flag) {
+                *long_options[match].flag = long_options[match].val;
+                return (0);
+        } else
+                return (long_options[match].val);
+#undef IDENTICAL_INTERPRETATION
+}
+
+/*
+ * getopt_internal --
+ *    Parse argc/argv argument vector.  Called by user level routines.
+ */
+static int
+getopt_internal(int nargc, char * const *nargv, const char *options,
+        const struct option *long_options, int *idx, int flags)
+{
+        char *oli;                /* option letter list index */
+        int optchar, short_too;
+        static int posixly_correct = -1;
+
+        if (options == NULL)
+                return (-1);
+
+        /*
+         * XXX Some GNU programs (like cvs) set optind to 0 instead of
+         * XXX using optreset.  Work around this braindamage.
+         */
+        if (optind == 0)
+                optind = optreset = 1;
+
+        /*
+         * Disable GNU extensions if POSIXLY_CORRECT is set or options
+         * string begins with a '+'.
+         *
+         * CV, 2009-12-14: Check POSIXLY_CORRECT anew if optind == 0 or
+         *                 optreset != 0 for GNU compatibility.
+         */
+        if (posixly_correct == -1 || optreset != 0)
+                posixly_correct = (getenv("POSIXLY_CORRECT") != NULL);
+        if (*options == '-')
+                flags |= FLAG_ALLARGS;
+        else if (posixly_correct || *options == '+')
+                flags &= ~FLAG_PERMUTE;
+        if (*options == '+' || *options == '-')
+                options++;
+
+        optarg = NULL;
+        if (optreset)
+                nonopt_start = nonopt_end = -1;
+start:
+        if (optreset || !*place) {        /* update scanning pointer */
+                optreset = 0;
+                if (optind >= nargc) {          /* end of argument vector */
+                        place = EMSG;
+                        if (nonopt_end != -1) {
+                                /* do permutation, if we have to */
+                                permute_args(nonopt_start, nonopt_end,
+                                    optind, nargv);
+                                optind -= nonopt_end - nonopt_start;
+                        }
+                        else if (nonopt_start != -1) {
+                                /*
+                                 * If we skipped non-options, set optind
+                                 * to the first of them.
+                                 */
+                                optind = nonopt_start;
+                        }
+                        nonopt_start = nonopt_end = -1;
+                        return (-1);
+                }
+                if (*(place = nargv[optind]) != '-' ||
+                    (place[1] == '\\0' && strchr(options, '-') == NULL)) {
+                        place = EMSG;        /* found non-option */
+                        if (flags & FLAG_ALLARGS) {
+                                /*
+                                 * GNU extension:
+                                 * return non-option as argument to option 1
+                                 */
+                                optarg = nargv[optind++];
+                                return (INORDER);
+                        }
+                        if (!(flags & FLAG_PERMUTE)) {
+                                /*
+                                 * If no permutation wanted, stop parsing
+                                 * at first non-option.
+                                 */
+                                return (-1);
+                        }
+                        /* do permutation */
+                        if (nonopt_start == -1)
+                                nonopt_start = optind;
+                        else if (nonopt_end != -1) {
+                                permute_args(nonopt_start, nonopt_end,
+                                    optind, nargv);
+                                nonopt_start = optind -
+                                    (nonopt_end - nonopt_start);
+                                nonopt_end = -1;
+                        }
+                        optind++;
+                        /* process next argument */
+                        goto start;
+                }
+                if (nonopt_start != -1 && nonopt_end == -1)
+                        nonopt_end = optind;
+
+                /*
+                 * If we have "-" do nothing, if "--" we are done.
+                 */
+                if (place[1] != '\\0' && *++place == '-' && place[1] == '\\0') {
+                        optind++;
+                        place = EMSG;
+                        /*
+                         * We found an option (--), so if we skipped
+                         * non-options, we have to permute.
+                         */
+                        if (nonopt_end != -1) {
+                                permute_args(nonopt_start, nonopt_end,
+                                    optind, nargv);
+                                optind -= nonopt_end - nonopt_start;
+                        }
+                        nonopt_start = nonopt_end = -1;
+                        return (-1);
+                }
+        }
+
+        /*
+         * Check long options if:
+         *  1) we were passed some
+         *  2) the arg is not just "-"
+         *  3) either the arg starts with -- we are getopt_long_only()
+         */
+        if (long_options != NULL && place != nargv[optind] &&
+            (*place == '-' || (flags & FLAG_LONGONLY))) {
+                short_too = 0;
+                if (*place == '-')
+                        place++;        /* --foo long option */
+                else if (*place != ':' && strchr(options, *place) != NULL)
+                        short_too = 1;        /* could be short option too */
+
+                optchar = parse_long_options(nargv, options, long_options,
+                    idx, short_too);
+                if (optchar != -1) {
+                        place = EMSG;
+                        return (optchar);
+                }
+        }
+
+        if ((optchar = (int)*place++) == (int)':' ||
+            (optchar == (int)'-' && *place != '\\0') ||
+            (oli = (char*)strchr(options, optchar)) == NULL) {
+                /*
+                 * If the user specified "-" and  '-' isn't listed in
+                 * options, return -1 (non-option) as per POSIX.
+                 * Otherwise, it is an unknown option character (or ':').
+                 */
+                if (optchar == (int)'-' && *place == '\\0')
+                        return (-1);
+                if (!*place)
+                        ++optind;
+                if (PRINT_ERROR)
+                        warnx(illoptchar, optchar);
+                optopt = optchar;
+                return (BADCH);
+        }
+        if (long_options != NULL && optchar == 'W' && oli[1] == ';') {
+                /* -W long-option */
+                if (*place)            /* no space */
+                        /* NOTHING */;
+                else if (++optind >= nargc) {    /* no arg */
+                        place = EMSG;
+                        if (PRINT_ERROR)
+                                warnx(recargchar, optchar);
+                        optopt = optchar;
+                        return (BADARG);
+                } else                /* white space */
+                        place = nargv[optind];
+                optchar = parse_long_options(nargv, options, long_options,
+                    idx, 0);
+                place = EMSG;
+                return (optchar);
+        }
+        if (*++oli != ':') {            /* doesn't take argument */
+                if (!*place)
+                        ++optind;
+        } else {                /* takes (optional) argument */
+                optarg = NULL;
+                if (*place)            /* no white space */
+                        optarg = place;
+                else if (oli[1] != ':') {    /* arg not optional */
+                        if (++optind >= nargc) {    /* no arg */
+                                place = EMSG;
+                                if (PRINT_ERROR)
+                                        warnx(recargchar, optchar);
+                                optopt = optchar;
+                                return (BADARG);
+                        } else
+                                optarg = nargv[optind];
+                }
+                place = EMSG;
+                ++optind;
+        }
+        /* dump back option letter */
+        return (optchar);
+}
+
+/*
+ * getopt_long --
+ *    Parse argc/argv argument vector.
+ */
+int
+getopt_long(int nargc, char * const *nargv, const char *options,
+    const struct option *long_options, int *idx)
+{
+
+        return (getopt_internal(nargc, nargv, options, long_options, idx,
+            FLAG_PERMUTE));
+}
+
+/*
+ * getopt_long_only --
+ *    Parse argc/argv argument vector.
+ */
+int
+getopt_long_only(int nargc, char * const *nargv, const char *options,
+    const struct option *long_options, int *idx)
+{
+
+        return (getopt_internal(nargc, nargv, options, long_options, idx,
+            FLAG_PERMUTE|FLAG_LONGONLY));
+}
+
+//extern int getopt_long(int nargc, char * const *nargv, const char *options,
+//    const struct option *long_options, int *idx);
+//extern int getopt_long_only(int nargc, char * const *nargv, const char *options,
+//    const struct option *long_options, int *idx);
+/*
+ * Previous MinGW implementation had...
+ */
+#ifndef HAVE_DECL_GETOPT
+/*
+ * ...for the long form API only; keep this for compatibility.
+ */
+# define HAVE_DECL_GETOPT    1
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__) */
+
+.
+.####################################################################################
+.echo "Generating packaging/unix/install_script.sh ..."
+.output "packaging/unix/install_script.sh"
+#!/usr/bin/env bash
+
+# Checks whether the current user is root or not and make use of 'sudo' if needed.
+function _check_sudo {
+    if [[ $EUID = 0 ]]
+    then
+        $@
+    else
+        echo "WARNING: You need an elevated prompt to install the ingescape library"
+        sudo $@
+    fi
+}
+
+## Initialisation
+
+# Exit on error
+set -o errexit
+
+# Exit on unknown variable used
+set -o nounset
+
+# Return code for piped sequences is the last command that returned non-zero (we don't have pipes for now)
+set -o pipefail
+
+echo "Installing ingescape and its dependencies..."
+echo "-----------------------"
+_check_sudo cp -rv . /usr/local/
+
+echo ""
+echo "Installation completed with success!"
+
+## EOF ##
+.
+.####################################################################################
+.echo "Generating .gitignore ..."
+.output ".gitignore"
+# Ignore compiled files
+*.o
+
+#Xcode files
+*.xcodeproj
+#Ignore build Xcode Path
+build-xcode
+Debug
+Release
+SharedPrecompiledHeaders
+*.build
+#Ignore Xcode User Pref
+xcuserdata
+xcshareddata
+
+#VS files
+*.vscode
+
+.
+.####################################################################################
+.echo "Generating .gitmodules ..."
+.output ".gitmodules"
+[submodule "dependencies/curl"]
+	path = dependencies/curl
+	url = ssh://git@gitlab.ingescape.com:22222/third-party/curl.git
+
+.
+.####################################################################################
+.echo "Generating bootstrap.sh ..."
+.output "bootstrap.sh"
+#!/bin/sh
+
+set -e
+
+[[ ! -d .git ]] && echo "Initializing a git repository first..." && git init
+
+git config -f .gitmodules --get-regexp '^submodule\..*\.path\$' |
+    while read path_key path
+    do
+        url_key=\$(echo \$path_key | sed 's/\.path/.url/')
+        url=\$(git config -f .gitmodules --get "\$url_key")
+        branch_key=\$(echo $path_key | sed 's/\.path/.branch/')
+        branch=\$(git config -f .gitmodules --get "\$branch_key" 2> /dev/null || true)
+
+        if [[ -z \$branch ]]
+        then
+            git submodule add \$url \$path
+        else
+            git submodule add -b \$branch \$url \$path
+        fi
+    done
+.
+.####################################################################################
+.echo "Generating CMakeLists.txt ..."
+.output "CMakeLists.txt"
+cmake_minimum_required(VERSION 3.16)
+project($(project.name:no))
+set (VERSION "1.0.0")
+
+set(CMAKE_MODULES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/builds/cmake")
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_MODULES_DIR})
+include(IdentifyOS)
+
+# agent and external dependencies (if any)
+add_executable(${PROJECT_NAME}
+.for swaggers. as server
+    src/$(server.name:Camel).c
+.endfor
+    src/main.c)
+
+# Override default release flags to not define NDEBUG, which CMake sets by default for Release builds
+# NB: The NDEBUG flag compile out all assert() calls, skipping whatever was done in the assert call (function call, computation, etc.)
+# It changes the compiled code from the source code and we don't want that.
+if (NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+   # Enable assertions in release mode
+   message(STATUS "Enable C asserts in release mode (instead of noop)")
+   if (MSVC)
+       string(REPLACE "/D NDEBUG" "" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+       string(REPLACE "/D NDEBUG" "" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+       string(REPLACE "/D NDEBUG" "" CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}")
+
+       string(REPLACE "/DNDEBUG" "" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+       string(REPLACE "/DNDEBUG" "" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+       string(REPLACE "/DNDEBUG" "" CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}")
+
+       string(REPLACE "/D NDEBUG" "" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+       string(REPLACE "/D NDEBUG" "" CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+       string(REPLACE "/D NDEBUG" "" CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
+
+       string(REPLACE "/DNDEBUG" "" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+       string(REPLACE "/DNDEBUG" "" CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+       string(REPLACE "/DNDEBUG" "" CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
+   else()
+       string(REPLACE "-DNDEBUG" "" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+       string(REPLACE "-DNDEBUG" "" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+       string(REPLACE "-DNDEBUG" "" CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}")
+
+       string(REPLACE "-DNDEBUG" "" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+       string(REPLACE "-DNDEBUG" "" CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+       string(REPLACE "-DNDEBUG" "" CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
+   endif()
+endif()
+
+if(UNIX AND NOT APPLE)
+    #FIXME Is the condition necessary even when using C_STANDARD property?
+    set_target_properties(${PROJECT_NAME}
+      PROPERTIES
+        C_STANDARD 99
+    )
+endif()
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src) # local headers
+
+if (WIN32)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/packaging/windows)
+endif (WIN32)
+
+find_package (sodium)
+find_package (ZeroMQ 4.3.3 REQUIRED)
+if (ZeroMQ_FOUND)
+    target_link_libraries (${PROJECT_NAME} PRIVATE libzmq)
+else (ZeroMQ_FOUND)
+    message(FATAL_ERROR "ZeroMQ - Dependency not found")
+endif (ZeroMQ_FOUND)
+
+find_package (czmq 4.2.1 REQUIRED)
+if (czmq_FOUND)
+    target_link_libraries (${PROJECT_NAME} PRIVATE czmq)
+else (czmq_FOUND)
+    message(FATAL_ERROR "czmq - Dependency not found")
+endif (czmq_FOUND)
+
+find_package (zyre 2.0.1 REQUIRED)
+if (zyre_FOUND)
+  target_link_libraries (${PROJECT_NAME} PRIVATE zyre)
+else (zyre_FOUND)
+  message(FATAL_ERROR "zyre - Dependency not found")
+endif (zyre_FOUND)
+
+find_package (ingescape 3.1 REQUIRED)
+if (ingescape_FOUND)
+    target_link_libraries (${PROJECT_NAME} PRIVATE ingescape)
+else (ingescape_FOUND)
+    message(FATAL_ERROR "ingescape - Dependency not found")
+endif (ingescape_FOUND)
+
+#CURL
+if(UNIX)
+  find_package(CURL REQUIRED) #find the native CURL headers and libraries
+  target_include_directories(${PROJECT_NAME} PRIVATE ${CURL_INCLUDE_DIRS})
+  target_link_libraries(${PROJECT_NAME} PRIVATE ${CURL_LIBRARIES})
+elseif(WIN32)
+  target_include_directories (${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/curl/include)
+  math(EXPR BITS "8*${CMAKE_SIZEOF_VOID_P}")
+  if (${BITS} STREQUAL 32)
+    set(CURL_FOLDER "x86")
+  else ()
+    set(CURL_FOLDER "x64")
+  endif ()
+
+  target_link_libraries (${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/curl/builds/windows/${CURL_FOLDER}/libcurl_imp.lib)
+  #copy libcurl.dll next to our .exe so that it is found at runtime
+  add_custom_command(TARGET ${PROJECT_NAME}
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/curl/builds/windows/${CURL_FOLDER}/libcurl.dll ${PROJECT_BINARY_DIR}/${CMAKE_BUILD_TYPE}/)
+  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/curl/builds/windows/${CURL_FOLDER}/libcurl.dll
+          DESTINATION bin)
+else()
+  message(FATAL_ERROR "UNIX or WIN32 not defined, can not create make file")
+endif(UNIX)
+
+set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}" )
+
+install (TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin COMPONENT agent)
+
+########################################################################
+# installer
+########################################################################
+# Package installer for release build only
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+  set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+  set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "${PROJECT_NAME} ingescape agent")
+  set(CPACK_PACKAGE_DESCRIPTION "${PROJECT_NAME} ingescape agent")
+  set(CPACK_PACKAGE_HOMEPAGE_URL "https://ingescape.com")
+  set(CPACK_PACKAGE_VENDOR "Ingescape Circle")
+  set(CPACK_PACKAGE_CONTACT "")
+  set(CPACK_PACKAGE_VERSION ${VERSION})
+  set(CPACK_STRIP_FILES TRUE)
+
+  set(CPACK_SOURCE_IGNORE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/.git/;${CMAKE_CURRENT_SOURCE_DIR}/build/")
+
+  if (WIN32)
+    # Installers for 32- vs. 64-bit CMake:
+    #  - Root install directory (displayed to end user at installer-run time)
+    #  - "NSIS package/display name" (text used in the installer GUI)
+    #  - Registry key used to store info about the installation
+    if(CMAKE_CL_64)
+      set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
+      set(CPACK_NSIS_PACKAGE_NAME "${CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION} (Win64)")
+      set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "${CPACK_PACKAGE_NAME} (Win64)")
+    else()
+      set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES")
+      set(CPACK_NSIS_PACKAGE_NAME "${CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION}")
+      set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "${CPACK_PACKAGE_NAME} (Win32)")
+    endif()
+
+    # On windows put all agents in ingescape directory
+    set(CPACK_PACKAGE_INSTALL_DIRECTORY "ingescape")
+
+    # NSIS configuration for Windows
+    set(CPACK_NSIS_DISPLAY_NAME "${PROJECT_NAME}")
+    set(CPACK_NSIS_PACKAGE_NAME ${PROJECT_NAME})
+    set(CPACK_NSIS_HELP_LINK "https://ingescape.com")
+    set(CPACK_NSIS_CONTACT "contact@ingescape.com")
+
+    set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+    set(CPACK_NSIS_MODIFY_PATH OFF)
+    set(CPACK_NSIS_URL_INFO_ABOUT ${CMAKE_PROJECT_HOMEPAGE_URL})
+    set(CPACK_MONOLITHIC_INSTALL ON)
+    set(CPACK_GENERATOR "NSIS;ZIP")
+
+  elseif ( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin" )
+    # Without component productbuild will not package any files
+    set (CPACK_COMPONENTS_ALL agent)
+    set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local")
+    set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local")
+    set(CPACK_SYSTEM_NAME "macos")
+    set(CPACK_GENERATOR "productbuild;ZIP")
+
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/LICENSE" "${CMAKE_BINARY_DIR}/LICENSE.txt" COPYONLY)
+    set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_BINARY_DIR}/LICENSE.txt")
+
+  else ()
+    set(CPACK_MONOLITHIC_INSTALL ON)
+    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/packaging/unix/install_script.sh"
+            DESTINATION "."
+            PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+            COMPONENT agent)
+    set(CPACK_GENERATOR "TGZ")
+  endif ()
+
+  include (CPack)
+endif()
+
+# ##############################################################################
+# summary
+# ##############################################################################
+message("")
+message(STATUS "******************* Configuration Summary *******************")
+message(STATUS "General:")
+message(STATUS "  Version           :   ${VERSION}")
+message(STATUS "  System            :   ${CMAKE_SYSTEM_NAME}")
+message(STATUS "  C compiler        :   ${CMAKE_C_COMPILER}")
+message(
+  STATUS "  Debug C flags     :   ${CMAKE_C_FLAGS_DEBUG} ${CMAKE_C_FLAGS}")
+message(
+  STATUS "  Release C flags   :   ${CMAKE_C_FLAGS_RELEASE} ${CMAKE_C_FLAGS}")
+message(STATUS "  Build type        :   ${CMAKE_BUILD_TYPE}")
+message(STATUS "")
+message(STATUS "Dependencies:")
+include(FeatureSummary)
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+message(STATUS "")
+message(STATUS "Install:")
+message(STATUS "  Install prefix    :   ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "")
+if(NOT MSVC)
+  message(
+    STATUS "*************************************************************")
+  message(STATUS "Configuration complete! Now procced with:")
+  message(STATUS "  'make'                compile the project")
+  message(
+    STATUS
+      "  'make install'        install the project to ${CMAKE_INSTALL_PREFIX}")
+  message(
+    STATUS
+      "  'make uninstall'      uninstall the project from ${CMAKE_INSTALL_PREFIX}"
+    )
+  if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    message(STATUS "  'make package'        Create library installer")
+  endif()
+endif()
+message(STATUS "")
+
+.
+.####################################################################################
+.echo "Generating other static files ..."
+.output "LICENSE"
+Add your license here
+.
+.####################################################################################
+.echo "Generating README.md ..."
+.output "README.md"
+# $(project.name:no)
+
+Once generated, you can setup a git repository with these commands:
+
+    chmod +x bootstrap.sh
+    ./bootstrap.sh
+
+The structure of this directory and the specifics of each folder are listed below.
+For more in depth detail on each folder, navigate to that folder to view its specific README.md
+
+```
+├──  README.md
+├──  builds
+├──  dependencies
+├──  packaging
+├──  src
+```
+
+The **builds** folder contains utility files for build (CMake, etc.).
+
+The **dependencies** folder contains other GIT repositories as sub-modules (CURL, etc.).
+
+The **packaging** folder contains utility files for packaging.
+
+The **src** folder contains the source files of the application.
+.
+.endfor
+.endfor
+.endtemplate

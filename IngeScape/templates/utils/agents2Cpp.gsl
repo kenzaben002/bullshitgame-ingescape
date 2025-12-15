@@ -1,0 +1,671 @@
+.ignorecase = 0
+
+if !defined(global.project_hasAgents) | !defined(global.project_useIngescape) | !global.project_useIngescape
+    abort "Error: No agents definition into source file or use of ingescape forbidden, {file: $(gsl.filename)}."
+endif
+
+global.agent_functionParameter = definition.major ?? "" ? "_igsAgent, "
+global.agent_functionName = definition.major ?? "igs_" ? "igsagent_"
+global.agent_callbackParameter = definition.major ?? "" ? "igsagent_t *self, "
+global.agent_callbackLogParameter = definition.major ?? "" ? "self, "
+
+directory.create(global.project_agentFolder)
+
+function generateAgentProjectFiles(agents)
+.template 1
+.if global.project_hasSubProject
+.####################################################################################
+.echo "Generating agents.cmake ..."
+.output "$(global.project_agentFolder)/agents.cmake"
+# File list
+target_sources(${PROJECT_NAME} PRIVATE
+.   for agents. as definition
+    ${CMAKE_CURRENT_SOURCE_DIR}/agents/$(definition.name:camel,lower).cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/agents/$(definition.name:camel,lower).h
+.   endfor
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/agents)
+
+.####################################################################################
+.echo "Generating packages.pri ..."
+.output "$(global.project_agentFolder)/agents.pri"
+INCLUDEPATH += $$PWD
+
+QT += qml quick
+
+SOURCES += \\
+.   for agents. as definition
+    $$PWD/$(definition.name:camel,lower).cpp \\
+.   endfor
+
+HEADERS += \\
+.   for agents. as definition
+    $$PWD/$(definition.name:camel,lower).h \\
+.   endfor
+
+.endif # if global.project_hasSubProject
+.endtemplate
+endfunction
+
+
+.template 1
+.
+.####################################################################################
+.echo "Generating src/$(definition.name:camel,lower).h..."
+.output "$(global.project_agentFolder)/$(definition.name:camel,lower).h"
+$(global.project_generateCopyright(global.project_name, global.project_contributor))
+
+#ifndef $(definition.name:camel,UPPER)_H
+#define $(definition.name:camel,UPPER)_H
+
+.if !definition.major
+#if defined(INGESCAPE_FROM_PRI)
+    #include "igsagent.h"
+#else
+    #include <ingescape/igsagent.h>
+#endif // INGESCAPE_FROM_PRI
+.endif
+
+#include <QObject>
+#include <QtQml>
+
+
+class $(definition.name:Pascal) : public QObject
+{
+    Q_OBJECT
+
+.if count(definition.parameter) > 0
+.   for definition.parameter
+.       prop_name = "attribute$(nameToCName(parameter.name))"
+    Q_PROPERTY($(typeToQtType(parameter.type)) $(prop_name) READ $(prop_name) WRITE set$(prop_name) NOTIFY $(prop_name)Changed)
+.   endfor
+
+.endif
+.if count(definition.input) > 0
+.   for definition.input
+.       prop_name = "input$(nameToCName(input.name))"
+.       if (input.type = "IMPULSION")
+    Q_PROPERTY(QVariant $(prop_name) READ $(prop_name) NOTIFY $(prop_name)Changed)
+.       else
+    Q_PROPERTY($(typeToQtType(input.type)) $(prop_name) READ $(prop_name) NOTIFY $(prop_name)Changed)
+.       endif
+.   endfor
+
+.endif
+.if count(definition.output) > 0
+.   for definition.output
+.       prop_name = "output$(nameToCName(output.name))"
+.       if (output.type = "IMPULSION")
+    Q_PROPERTY(QVariant $(prop_name) READ $(prop_name) WRITE set$(prop_name) NOTIFY $(prop_name)Changed)
+.       else
+    Q_PROPERTY($(typeToQtType(output.type)) $(prop_name) READ $(prop_name) WRITE set$(prop_name) NOTIFY $(prop_name)Changed)
+.       endif
+.   endfor
+
+.endif
+
+public:
+    static $(definition.name:Pascal)& instance();
+    static QObject* qmlSingleton(QQmlEngine* engine, QJSEngine* scriptEngine);
+.if count(definition.parameter) > 0
+
+.   for definition.parameter
+.       prop_name = "attribute$(nameToCName(parameter.name))"
+    $(typeToQtType(parameter.type)) $(prop_name)() const { return _$(prop_name); };
+.   endfor
+.endif
+.if count(definition.input) > 0
+
+.   for definition.input
+.       prop_name = "input$(nameToCName(input.name))"
+.       if (input.type = "IMPULSION")
+    // An impulsion does not contain any value: we always return an empty value
+    QVariant $(prop_name)() const { return QVariant(); };
+.       else
+    $(typeToQtType(input.type)) $(prop_name)() const { return _$(prop_name); };
+.       endif
+.   endfor
+.endif
+.if count(definition.output) > 0
+
+.   for definition.output
+.       prop_name = "output$(nameToCName(output.name))"
+.       if (output.type = "IMPULSION")
+    // An impulsion does not contain any value: we always return an empty value
+    QVariant $(prop_name)() const { return QVariant(); };
+.       else
+    $(typeToQtType(output.type)) $(prop_name)() const { return _$(prop_name); };
+.       endif
+.   endfor
+.endif
+.if (count(definition.parameter) + count(definition.input) + count(definition.output)) > 0
+
+
+public Q_SLOTS:
+.if count(definition.parameter) > 0
+.   for definition.parameter
+.       prop_name = "attribute$(nameToCName(parameter.name))"
+    void set$(prop_name)($(typeToQtArgument (parameter.type)) value);
+.   endfor
+
+.endif
+.if count(definition.input) > 0
+.   for definition.input
+.       prop_name = "input$(nameToCName(input.name))"
+.       if (input.type = "IMPULSION")
+    // An impulsion does not contain any value: value will not be stored
+    void set$(prop_name)(const QVariant& value = {});
+.       else
+    void set$(prop_name)($(typeToQtArgument (input.type)) value);
+.       endif
+.   endfor
+
+.endif
+.if count(definition.output) > 0
+.   for definition.output
+.       prop_name = "output$(nameToCName(output.name))"
+.       if (output.type = "IMPULSION")
+    // An impulsion does not contain any value: value will not be stored
+    void set$(prop_name)(const QVariant& value = {});
+.       else
+    void set$(prop_name)($(typeToQtArgument (output.type)) value);
+.       endif
+.   endfor
+
+.endif
+.endif
+.if (count(definition.parameter) + count(definition.input) + count(definition.output) + count(definition.service)) > 0
+
+Q_SIGNALS:
+.   if count(definition.parameter) > 0
+.       for definition.parameter
+.           prop_name = "attribute$(nameToCName(parameter.name))"
+    void $(prop_name)Changed();
+.       endfor
+
+.   endif
+.   if count(definition.input) > 0
+.       for definition.input
+.           prop_name = "input$(nameToCName(input.name))"
+    void $(prop_name)Changed();
+.       endfor
+
+.   endif
+.   if count(definition.output) > 0
+.       for definition.output
+.           prop_name = "output$(nameToCName(output.name))"
+    void $(prop_name)Changed();
+.       endfor
+
+.   endif
+.endif
+
+private:
+    explicit $(definition.name:Pascal)(QObject* parent = nullptr);
+    virtual ~$(definition.name:Pascal)() override;
+
+
+private:
+.if !definition.major
+    igsagent_t * _igsAgent {};
+
+.endif
+.if count(definition.parameter) > 0
+.for definition.parameter
+.prop_name = "attribute$(nameToCName(parameter.name))"
+    $(typeToQtType (parameter.type)) _$(prop_name) {};
+.endfor
+
+.endif
+.if count(definition.input) > 0
+.   for definition.input
+.       if (!(input.type = "IMPULSION"))
+.          prop_name = "input$(nameToCName(input.name))"
+    $(typeToQtType (input.type)) _$(prop_name) {};
+.       endif
+.   endfor
+
+.endif
+.if count(definition.output) > 0
+.   for definition.output
+.       if (!(output.type = "IMPULSION"))
+.          prop_name = "output$(nameToCName(output.name))"
+    $(typeToQtType (output.type)) _$(prop_name) {};
+.       endif
+.   endfor
+.endif
+};
+
+QML_DECLARE_TYPE($(definition.name:Pascal))
+
+#endif // $(definition.name:camel,UPPER)
+.
+.####################################################################################
+.echo "Generating src/$(definition.name:camel,lower).cpp..."
+.output "$(global.project_agentFolder)/$(definition.name:camel,lower).cpp"
+$(global.project_generateCopyright(global.project_name, global.project_contributor))
+
+#include "$(definition.name:camel,lower).h"
+
+#if defined(INGESCAPE_FROM_PRI)
+    #include "ingescape.h"
+#else
+    #include <ingescape/ingescape.h>
+#endif // INGESCAPE_FROM_PRI
+
+
+#include <QtGlobal>
+#include <QDebug>
+
+
+.if (defined (definition.iopCallbackMode))
+.if (!(definition.iopCallbackMode = "none") & count(definition.input) > 0)
+// inputs
+.endif
+.if (definition.iopCallbackMode = "grouped")
+void $(definition.name :Camel)_inputsCallback($(global.agent_callbackParameter)igs_io_type_t ioType, const char* name, igs_io_value_type_t valueType,
+	                void* value, size_t valueSize, void* myData) {
+    Q_UNUSED(ioType)
+    Q_UNUSED(valueType)
+    Q_UNUSED(value)
+    Q_UNUSED(valueSize)
+    auto agent = static_cast<$(definition.name:Pascal)*>(myData);
+    if (agent)
+    {
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed", name);
+        //TODO: add code depending on this agent's expected behaviour
+    }
+}
+
+
+.elsif (definition.iopCallbackMode = "individual")
+.for definition.input
+.prop_name = "input$(nameToCName(input.name))"
+void $(definition.name :Camel)_$(prop_name)Callback($(global.agent_callbackParameter)igs_io_type_t ioType, const char* name, igs_io_value_type_t valueType,
+	                    void* value, size_t valueSize, void* myData) {
+    Q_UNUSED(ioType)
+    Q_UNUSED(valueType)
+.if (input.type = "IMPULSION")
+    Q_UNUSED(value)
+.endif
+.if (!(input.type = "DATA"))
+    Q_UNUSED(valueSize)
+.endif
+    auto agent = static_cast<$(definition.name:Pascal)*>(myData);
+    if (agent)
+    {
+.if (input.type = "INTEGER")
+        int v = *(int *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %d", name, v);
+        agent->set$(prop_name)(v);
+.elsif (input.type = "IMPULSION")
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed (impulsion)", name);
+        agent->set$(prop_name)();
+.elsif (input.type = "BOOL")
+        bool v = *(bool *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %d", name, v);
+        agent->set$(prop_name)(v);
+.elsif (input.type = "DOUBLE")
+        double v = *(double *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %f", name, v);
+        agent->set$(prop_name)(v);
+.elsif (input.type = "STRING")
+        char *v = (char *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %s", name, v);
+        agent->set$(prop_name)(v);
+.elsif (input.type = "DATA")
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed (%zu bytes)", name, valueSize);
+        $(typeToQtType(input.type)) byteArray = $(typeToQtType(input.type))(static_cast<char*>(value), valueSize);
+        agent->set$(prop_name)(byteArray);
+.endif
+    }
+}
+
+
+.endfor
+.endif
+.endif
+.
+.if (defined (definition.iopCallbackMode))
+.if (!(definition.iopCallbackMode = "none") & count(definition.parameter) > 0)
+// parameters
+.endif
+.if (definition.iopCallbackMode = "grouped")
+void $(definition.name :Camel)_attributesCallback($(global.agent_callbackParameter)igs_io_type_t ioType, const char* name, igs_io_value_type_t valueType,
+	                void* value, size_t valueSize, void* myData) {
+    Q_UNUSED(ioType)
+    Q_UNUSED(valueType)
+    Q_UNUSED(value)
+    Q_UNUSED(valueSize)
+    auto agent = static_cast<$(definition.name:Pascal)*>(myData);
+    if (agent)
+    {
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed", name);
+        //TODO: add code depending on this agent's expected behaviour
+    }
+}
+
+
+.elsif (definition.iopCallbackMode = "individual")
+.for definition.parameter
+.prop_name = "attribute$(nameToCName(parameter.name))"
+void $(definition.name :Camel)_$(prop_name)Callback($(global.agent_callbackParameter)igs_io_type_t ioType, const char* name, igs_io_value_type_t valueType,
+	                    void* value, size_t valueSize, void* myData) {
+    Q_UNUSED(ioType)
+    Q_UNUSED(valueType)
+.if (!(parameter.type = "DATA"))
+    Q_UNUSED(valueSize)
+.endif
+    auto agent = static_cast<$(definition.name:Pascal)*>(myData);
+    if (agent)
+    {
+.if (parameter.type = "INTEGER")
+        int v = *(int *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %d", name, v);
+        agent->set$(prop_name)(v);
+.elsif (parameter.type = "BOOL")
+        bool v = *(bool *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %d", name, v);
+        agent->set$(prop_name)(v);
+.elsif (parameter.type = "DOUBLE")
+        double v = *(double *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %f", name, v);
+        agent->set$(prop_name)(v);
+.elsif (parameter.type = "STRING")
+        char *v = (char *)value;
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed to %s", name, v);
+        agent->set$(prop_name)(v);
+.elsif (parameter.type = "DATA")
+        $(global.agent_functionName)info($(global.agent_callbackLogParameter)"%s changed (%zu bytes)", name, valueSize);
+        $(typeToQtType(parameter.type)) byteArray = $(typeToQtType(parameter.type))(static_cast<char*>(value), valueSize);
+        agent->set$(prop_name)(byteArray);
+.endif
+    }
+}
+
+
+.endfor
+.endif
+.endif
+.
+.if count(service) > 0
+// services
+.endif
+.for service
+void $(definition.name :Camel)_$(nameToCName(service.name))Callback($(global.agent_callbackParameter)const char *serviceerAgentName, const char *serviceerAgentUUID,
+                          const char *serviceName, igs_service_arg_t *firstArgument, size_t nbArgs,
+                          const char *token, void* myData){
+    Q_UNUSED(serviceerAgentName)
+    Q_UNUSED(serviceerAgentUUID)
+    Q_UNUSED(serviceName)
+.if (count(argument) = 0)
+    Q_UNUSED(firstArgument)
+.endif
+    Q_UNUSED(nbArgs)
+    Q_UNUSED(token)
+    auto agent = static_cast<$(definition.name:Pascal)*>(myData);
+    if (agent)
+    {
+.if (count(argument) > 0)
+.argumentPrefix = "firstArgument"
+.   for argument
+.       if (argument.type = "INTEGER")
+        $(typeToQtType(argument.type)) $(nameToCName(argument.name)) = $(argumentPrefix)->i;
+.       elsif (argument.type = "BOOL")
+        $(typeToQtType(argument.type)) $(nameToCName(argument.name)) = $(argumentPrefix)->b;
+.       elsif (argument.type = "DOUBLE")
+        $(typeToQtType(argument.type)) $(nameToCName(argument.name)) = $(argumentPrefix)->d;
+.       elsif (argument.type = "STRING")
+        $(typeToQtType(argument.type)) $(nameToCName(argument.name)) = $(argumentPrefix)->c;
+.       elsif (argument.type = "DATA")
+        $(typeToQtType(argument.type)) $(nameToCName(argument.name)) = $(typeToQtType(argument.type))(static_cast<char*>($(argumentPrefix)->data), $(argumentPrefix)->size);
+.       endif
+        Q_UNUSED($(nameToCName(argument.name)))
+.argumentPrefix = argumentPrefix + "->next"
+.   endfor
+.endif
+        //TODO Behavior on service $(service.name) called
+    }
+}
+
+
+.endfor
+
+$(definition.name:Pascal)::$(definition.name:Pascal)(QObject *parent)
+    : QObject(parent)
+.for definition.parameter
+.prop_name = "attribute$(nameToCName(parameter.name))"
+.if (type = "INTEGER")
+    , _$(prop_name)(0)
+.elsif (type = "DOUBLE")
+    , _$(prop_name)(0.0)
+.elsif (type = "BOOL")
+    , _$(prop_name)(false)
+.elsif (type = "DATA")
+    , _$(prop_name)(QByteArray(0, '\0'))
+.endif
+.endfor
+.for definition.input
+.prop_name = "input$(nameToCName(input.name))"
+.if (type = "INTEGER")
+    , _$(prop_name)(0)
+.elsif (type = "DOUBLE")
+    , _$(prop_name)(0.0)
+.elsif (type = "BOOL")
+    , _$(prop_name)(false)
+.endif
+.endfor
+.for definition.output
+.prop_name = "output$(nameToCName(output.name))"
+.if (type = "INTEGER")
+    , _$(prop_name)(0)
+.elsif (type = "DOUBLE")
+    , _$(prop_name)(0.0)
+.elsif (type = "BOOL")
+    , _$(prop_name)(false)
+.endif
+.endfor
+{
+    QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
+
+.if definition.major
+    igs_agent_set_name("$(definition.name)");
+.else
+    _igsAgent = igsagent_new("$(definition.name)", true);
+.endif
+
+.if count(definition.parameter) > 0
+.   for definition.parameter
+.      prop_name = "attribute$(nameToCName(parameter.name))"
+    $(global.agent_functionName)attribute_create($(global.agent_functionParameter)"$(parameter.name)", $(typeToIGSType(parameter.type)), nullptr, 0);
+.      if (defined (parameter.description) & string.length(parameter.description))
+    $(global.agent_functionName)attribute_set_description($(global.agent_functionParameter)"$(parameter.name)", "$(parameter.description)");
+.      endif
+.      if (defined (parameter.constraint) & string.length(parameter.constraint))
+    $(global.agent_functionName)attribute_add_constraint($(global.agent_functionParameter)"$(parameter.name)", "$(parameter.constraint)");
+.      endif
+.      if (definition.iopCallbackMode = "individual")
+    $(global.agent_functionName)observe_attribute($(global.agent_functionParameter)"$(parameter.name)", $(definition.name: Camel)_$(prop_name)Callback, this);
+.      elsif (definition.iopCallbackMode = "grouped")
+    $(global.agent_functionName)observe_attribute($(global.agent_functionParameter)"$(parameter.name)", $(definition.name: Camel)_attributesCallback, this);
+.      endif
+.   endfor
+
+.endif
+.if count(definition.input) > 0
+.for definition.input
+.prop_name = "input$(nameToCName(input.name))"
+    $(global.agent_functionName)input_create($(global.agent_functionParameter)"$(input.name)", $(typeToIGSType(input.type)), nullptr, 0);
+.   if (defined (input.description) & string.length(input.description))
+    $(global.agent_functionName)input_set_description($(global.agent_functionParameter)"$(input.name)", "$(input.description)");
+.   endif
+.   if (defined (input.constraint) & string.length(input.constraint))
+    $(global.agent_functionName)input_add_constraint($(global.agent_functionParameter)"$(input.name)", "$(input.constraint)");
+.   endif
+.if (definition.iopCallbackMode = "individual")
+    $(global.agent_functionName)observe_input($(global.agent_functionParameter)"$(input.name)", $(definition.name: Camel)_$(prop_name)Callback, this);
+.elsif (definition.iopCallbackMode = "grouped")
+    $(global.agent_functionName)observe_input($(global.agent_functionParameter)"$(input.name)", $(definition.name: Camel)_inputsCallback, this);
+.endif
+.endfor
+
+.endif
+.if count(definition.output) > 0
+.for definition.output
+.prop_name = "output$(nameToCName(output.name))"
+    $(global.agent_functionName)output_create($(global.agent_functionParameter)"$(output.name)", $(typeToIGSType(output.type)), nullptr, 0);
+.   if (defined (output.description) & string.length(output.description))
+    $(global.agent_functionName)output_set_description($(global.agent_functionParameter)"$(output.name)", "$(output.description)");
+.   endif
+.   if (defined (output.constraint) & string.length(output.constraint))
+    $(global.agent_functionName)output_add_constraint($(global.agent_functionParameter)"$(output.name)", "$(output.constraint)");
+.   endif
+.endfor
+
+.endif
+.if count(definition.service) > 0
+.   for definition.service
+    $(global.agent_functionName)service_init($(global.agent_functionParameter)"$(service.name)", $(definition.name: Camel)_$(nameToCName(service.name))Callback, this);
+.      for argument
+    $(global.agent_functionName)service_arg_add($(global.agent_functionParameter)"$(service.name)", "$(argument.name)", $(typeToIGSType(argument.type)));
+.      endfor
+.      for reply
+    $(global.agent_functionName)service_reply_add("$(service.name)", "$(reply.name)");
+.         for argument
+    $(global.agent_functionName)service_reply_arg_add("$(service.name)", "$(reply.name)", "$(argument.name)", $(typeToIGSType(argument.type)));
+.         endfor
+.      endfor
+
+.   endfor
+.endif
+}
+
+
+$(definition.name:Pascal)::~$(definition.name:Pascal)() = default;
+
+
+$(definition.name:Pascal)& $(definition.name:Pascal)::instance()
+{
+    static $(definition.name:Pascal) _instance;
+    return _instance;
+}
+
+
+QObject* $(definition.name:Pascal)::qmlSingleton(QQmlEngine* engine, QJSEngine* scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+    return &$(definition.name:Pascal)::instance();
+}
+
+
+.for definition.parameter
+.prop_name = "attribute$(nameToCName(parameter.name))"
+void $(definition.name:Pascal)::set$(prop_name)($(typeToQtArgument (parameter.type)) value)
+{
+.   if parameter.type = "DOUBLE"
+    if (qFuzzyCompare(_$(prop_name), value) == 0)
+.   elsif (parameter.type = "STRING" | parameter.type = "DATA")
+    if ((_$(prop_name) != value) || (_$(prop_name).isNull() != value.isNull()))
+.   else
+    if (_$(prop_name) != value)
+.   endif
+    {
+        _$(prop_name) = value;
+
+        //TODO Behavior when $(prop_name) changes
+
+        Q_EMIT $(prop_name)Changed();
+    }
+}
+
+
+.endfor
+.for definition.input
+.   prop_name = "input$(nameToCName(input.name))"
+.   if input.type = "IMPULSION"
+void $(definition.name:Pascal)::set$(prop_name)(const QVariant&)
+{
+    //TODO Behavior when $(prop_name) is triggered
+
+    Q_EMIT $(prop_name)Changed();
+}
+
+
+.   else
+void $(definition.name:Pascal)::set$(prop_name)($(typeToQtArgument (input.type)) value)
+{
+.   if input.type = "DOUBLE"
+    if (qFuzzyCompare(_$(prop_name), value) == 0)
+.   elsif (input.type = "STRING" | input.type = "DATA")
+    if ((_$(prop_name) != value) || (_$(prop_name).isNull() != value.isNull()))
+.   else
+    if (_$(prop_name) != value)
+.   endif
+    {
+        _$(prop_name) = value;
+
+        //TODO Behavior when $(prop_name) changes
+
+        Q_EMIT $(prop_name)Changed();
+    }
+}
+
+
+.   endif
+.endfor
+.for definition.output
+.   prop_name = "output$(nameToCName(output.name))"
+.   if output.type = "IMPULSION"
+void $(definition.name:Pascal)::set$(prop_name)(const QVariant&)
+{
+    //TODO Behavior when $(prop_name) is triggered
+
+    $(global.agent_functionName)output_set_impulsion($(global.agent_functionParameter)"$(output.name)");
+    Q_EMIT $(prop_name)Changed();
+}
+
+
+.   else
+void $(definition.name:Pascal)::set$(prop_name)($(typeToQtArgument (output.type)) value)
+{
+.   if output.type = "DOUBLE"
+    if (qFuzzyCompare(_$(prop_name), value) == 0)
+.   elsif (output.type = "STRING" | output.type = "DATA")
+    if ((_$(prop_name) != value) || (_$(prop_name).isNull() != value.isNull()))
+.   else
+    if (_$(prop_name) != value)
+.   endif
+    {
+        _$(prop_name) = value;
+
+        //TODO Behavior when $(prop_name) changes
+
+        Q_EMIT $(prop_name)Changed();
+    }
+
+.if (output.type = "BOOL")
+    $(global.agent_functionName)output_set_bool($(global.agent_functionParameter)"$(output.name)", _$(prop_name));
+.elsif (output.type = "INTEGER")
+    $(global.agent_functionName)output_set_int($(global.agent_functionParameter)"$(output.name)", _$(prop_name));
+.elsif (output.type = "DOUBLE")
+    $(global.agent_functionName)output_set_double($(global.agent_functionParameter)"$(output.name)", _$(prop_name));
+.elsif (output.type = "STRING")
+    if (_$(prop_name).isNull())
+        $(global.agent_functionName)output_set_string($(global.agent_functionParameter)"$(output.name)", nullptr);
+    else
+        $(global.agent_functionName)output_set_string($(global.agent_functionParameter)"$(output.name)", _$(prop_name).toStdString().c_str());
+.elsif (output.type = "DATA")
+    if (_$(prop_name).isNull())
+        $(global.agent_functionName)output_set_data($(global.agent_functionParameter)"$(output.name)", nullptr, 0);
+    else
+        $(global.agent_functionName)output_set_data($(global.agent_functionParameter)"$(output.name)", static_cast<void*>(_$(prop_name).constData()), static_cast<size_t>(_$(prop_name).size()));
+.endif
+}
+
+
+.   endif
+.endfor
+
+.endtemplate

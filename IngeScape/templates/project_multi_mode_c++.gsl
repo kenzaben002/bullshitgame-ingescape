@@ -1,0 +1,87 @@
+.# > name="3- Qt/QML application with UML and graphics"
+.# > keyword="C++"
+.# > description="A full Qt/QML Ingescape application with one or more agent definitions, optional UML models for C++/Qt model and controler classes and optional Sketch graphics."
+.# > agentMode="ZERO_OR_MORE"
+.# > packageMode="ZERO_OR_MORE"
+.# > graphicMode="ZERO_OR_MORE"
+.# > dependencies="utils/project2Cpp.gsl;utils/qmlInstrument.gsl;utils/uml2Cpp.gsl;utils/uml2CppCommon.gsl;utils/agents2Cpp.gsl;utils/sketch2QmlApp.gsl;utils/sketch2QmlCommon.gsl;utils/sketch2QmlLibrary.gsl"
+
+.template 0
+
+function project_generateCopyright(projectName, contributor)
+    return "/*
+ *	$(my.projectName)
+ *
+ *  $(global.project_copyright)
+ *
+ *	See license terms for the rights and conditions
+ *	defined by copyright holders.
+ *
+ *
+ *	Contributors:
+ *      $(my.contributor) <...@ingenuity.io>
+ *
+ */"
+endfunction
+
+if !defined(projects)
+    abort "Error: can't find <projects> root tag, {file: $(gsl.filename)}."
+endif
+
+for projects. as project
+
+    global.project_name = project.name
+    global.project_folder = directory.resolve(".")
+    global.project_hasSubProject = 1
+    global.project_contributor = project.author
+    global.project_copyright = project.copyright
+    global.project_sourceFolder = "src"
+    global.project_graphicFolder = "$(global.project_sourceFolder)/graphics"
+    global.project_packageFolder = "$(global.project_sourceFolder)/packages"
+    global.project_agentFolder = "$(global.project_sourceFolder)/agents"
+    global.project_scriptFolder = "."
+    global.project_hasAgents = count(project.agents) > 0
+    global.project_hasGraphics = count(project.graphics) > 0
+    global.project_hasPackages = count(project.packages) > 0
+    global.project_useI2Quick = 0
+    global.project_useQmlInstrument = 1
+    global.project_useQt5 = 0
+    global.project_useIngescape = 1
+    global.project_embedIngescape = 0
+
+    gsl from "project2Cpp.gsl"
+
+    gsl from "qmlInstrument.gsl"
+
+    for project. as agents where name(agents) = "agents"
+        echo "\n\n----------------------------"
+        echo "         Generating agents related files"
+        for agents. as definition
+            gsl from "agents2Cpp.gsl"
+        endfor
+        generateAgentProjectFiles(agents)
+    endfor
+
+    for project. as packages where name(packages) = "packages"
+        echo "\n\n----------------------------"
+        echo "        Generating UML packages related files"
+
+        gsl from "uml2Cpp.gsl"
+    endfor
+
+    for project. as graphics where name(graphics) = "graphics"
+        echo "\n\n----------------------------"
+        echo "      Generating Sketch graphics related files"
+
+        for graphics. as graphic
+            for graphic. as app where name(app) = "app"
+                gsl from "sketch2QmlApp.gsl"
+            endfor
+            for graphic. as library where name(library) = "library"
+                gsl from "sketch2QmlLibrary.gsl"
+            endfor
+        endfor
+    endfor
+endfor
+
+.endtemplate

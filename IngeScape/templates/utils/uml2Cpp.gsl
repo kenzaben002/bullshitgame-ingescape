@@ -1,0 +1,1060 @@
+.template 0
+
+######################################################
+# This script is compliant with the lucidchartUMLcsv2XML tool and allows you to generate c++ classes
+# from Lucid Chart website.
+#
+# Multiple C++ coding ways are covered:
+# - Standard c++
+# - Qt
+# - Qt + I2Quick helpers
+#
+### Usage
+# > gsl -script:path/to/uml2Cpp.gsl -a myModel.xml generationFolder scriptFolder projectName contributor
+# > gsl -script:uml2Cpp.gsl myModel.xml => if gsl and xml files are into the same folder
+#
+# By default, the generation folder is "." and classes are generated into a "generationFolder/packageName" folder.
+# E.g: "generationFolder/packageName/MyClass.h"
+#
+# This script can be used in standalone but also by using a project scripts.
+#
+### Input variables
+# Some input variables are required by this script:
+# - generationFolder = "."
+# - scriptFolder = "." the folder where this script and uml2CppCommon.gsl are
+# - projectName = ""
+# - contributor = "Ingscape Circle"
+#
+# Thoses variables have always default values but they can be overrided by:
+# - argument call
+# - project script declaration
+#
+# This script will firstly search for project script variable declaration.
+# If no one found, it will search for arguments.
+# If no one found, it will use default values
+#
+### Dependencies
+# As this script has a dependency to uml2CppCommon.gsl, you need to insure that the import is working.
+# The scriptFolder command line argument has to be used when the uml2Cpp.gsl, uml2CppCommon.gsl and myModel.xml are not in the same folder.
+# In that case, GSL will take the xml folder as root folder and uml2CppCommon.gsl import won't work.
+# So you will need to specify the scriptFolder to be able to import uml2CppCommon.gsl correctly.
+#
+######################################################
+
+ignorecase = 0
+
+### Input variables
+time.now(currentDate)
+currentYear = string.substr(currentDate, 0,3)
+
+global.uml_generationFolder = global.project_packageFolder ? switches.arg1 ? ""
+global.uml_scriptFolder = global.project_scriptFolder ? switches.arg2 ? "."
+global.uml_projectName = global.project_name ? switches.arg3 ? "// Your project name"
+global.uml_contributor = global.project_contributor ? switches.arg4 ? "Ingscape Circle"
+global.uml_copyright = global.project_copyright ? "Copyright © $(currentYear) Ingenuity i/o. All rights reserved."
+global.uml_generateProjectFiles = global.project_hasSubProject ? 0
+
+# check command line argument
+if !defined(global.project_hasSubProject) & !defined(switches.arg1)
+    echo "===============   Usage  ======================"
+    echo "You can also use following command line arguments"
+    echo "> gsl -script:path/to/uml2Cpp.gsl -a myModel.xml generationFolder scriptFolder projectName contributor"
+    echo "- scriptFolder: the path to the folder containing this script (uml2Cpp.gsl) and uml2CppCommon.gsl"
+    echo "or"
+    echo "> gsl -script:uml2Cpp.gsl myModel.xml => if gsl and xml files are into the same folder"
+    echo "==============================================="
+endif
+
+# include uml2CppCommon
+.gsl from "$(global.uml_scriptFolder)/uml2CppCommon.gsl"
+
+######################################################
+# Return the header definitions
+function generateIfDef(className, begin)
+    if global.usePragmaInHeader
+        if my.begin
+            ifDef = "#pragma once"
+        else
+            ifDef = ""
+        endif
+    else
+        if my.begin
+            ifDef = "#ifndef $(my.className: c, upper)_H\n#define $(my.className: c, upper)_H"
+        else
+            ifDef = "#endif // $(my.className: c, upper)_H"
+        endif
+    endif
+    return ifDef
+endfunction
+
+######################################################
+function generateCopyright()
+    time.now(currentDate)
+    year = string.substr(currentDate, 0,3)
+
+    return "/*
+ *	$(global.uml_projectName)
+ *
+ *  $(global.uml_copyright)
+ *
+ *	See license terms for the rights and conditions
+ *	defined by copyright holders.
+ *
+ *
+ *	Contributors:
+ *      $(global.uml_contributor) <...@ingenuity.io>
+ *
+ */"
+endfunction
+
+######################################################
+# Will generate enum header content
+# e.g: I2_ENUM(I2Materiau, PLASTIQUE, MOUSSE, ACIER);
+# e.g: enum class QtMateriau { PLASTIQUE, MOUSSE, ACIER };
+function generateEnumContent(enum)
+    # i2 case
+    if defined (my.enum.macro) & my.enum.macro = "ENUM_I2"
+
+        enumContent = "#include \"helpers/i2enumhelpers.h\"
+
+I2_ENUM($(my.enum.name: pascal), "
+    # cpp and qt casesase
+    else
+        enumContent = "enum class $(my.enum.name: pascal) {"
+    endif
+
+    for my.enum.value
+        enumContent += value.name
+        if defined (value.value)
+            enumContent += " = " + value.value
+        endif
+        if !last()
+        enumContent += ", "
+        endif
+    endfor
+
+    if defined (my.enum.macro) & my.enum.macro = "ENUM_I2"
+        enumContent += ");
+
+// FIXME Qt search the \"Q_OBJECT\" keyword, and if we only use the I2_ENUM macro, this won't build
+// NOTE we recomand you to move the I2_ENUM declaration into another file
+class AllowsBuild : public QObject
+{
+    Q_OBJECT
+};"
+    else
+        enumContent += "};"
+    endif
+    return enumContent
+endfunction
+
+# ######################################################
+# e.g: virtual bool verifierBatterie(const QString& type) = 0;
+function generateFunction(class, func, isInCpp)
+    funcStr = ""
+
+    # if pure virtual and in cpp file => nothing to generate
+    if my.isInCpp & defined(my.func.pureVirtual) & my.func.pureVirtual="true"
+        return funcStr
+    else
+        # virtual
+        if !my.isInCpp & ( isTrue(my.func.virtual) | isTrue(my.func.pureVirtual) )
+            funcStr = "virtual "
+        endif
+
+        # type
+        if defined(my.func.returnType) & string.length(my.func.returnType) > 0
+            funcStr += my.func.returnType + " "
+        else
+            funcStr += "void "
+        endif
+
+        # parameters
+        funcStr += "$(my.isInCpp ?? "$(my.class.name: pascal)::")"
+        funcStr += "$(my.func.name: c)("
+        for my.func.parameter
+            funcStr += "$(parameter.type)" + " " + "$(parameter.name: c)"
+            if defined(parameter.value) & string.length(parameter.value) > 0 & !my.isInCpp
+                funcStr += " = $(parameter.value)"
+            endif
+            if !last(parameter)
+                funcStr += ", "
+            endif
+        endfor
+        funcStr += ")"
+        if isTrue(my.func.pureVirtual) & !my.isInCpp
+            funcStr += " = 0"
+        endif
+        if isTrue(my.func.override) & !my.isInCpp
+                funcStr += " override"
+        endif
+
+        if !my.isInCpp
+            funcStr += ";"
+        else
+            funcStr += "\n{\n\n}"
+        endif
+    endif
+    return funcStr
+endfunction
+
+######################################################
+# Generate attributes for an access category
+# Handle attribut and default value if present
+# e.g:
+#   bool possedeFrein {true};
+#   QList<Roue*> roues {};
+#   Object* pointer {};
+function generateAttributesForAccessType(class, access)
+    attributeResult = ""
+    if count(my.class.attribute, attribute.access = my.access) > 0
+        for my.class.attribute as attr where (attr.access = my.access)
+            if !first(attr)
+                attributeResult += "    "
+            endif
+            type = convertIfListType(attr.type, isTrue(my.class.isQt))
+            attributeResult += "$(type) "
+            attributeResult += "$(attr.name: c)"
+            if defined (attr.value) & attr.value <> ""
+                attributeResult += " {$(attr.value)};\n"
+            else
+                attributeResult += " {};\n"
+            endif
+        endfor
+    endif
+    return attributeResult
+endfunction
+
+######################################################
+# e.g: ~I2Voiture();
+function generateDestructor(class, isInCpp)
+    destructStr = ""
+    if my.isInCpp
+        destructStr = "$(my.class.name: pascal)::"
+    endif
+    destructStr += "~$(my.class.name: pascal)()"
+    if my.isInCpp
+        destructStr += "\n{\n\n}"
+    else
+        destructStr += ";"
+    endif
+    return destructStr
+endfunction
+
+######################################################
+# e.g: explicit I2Voiture(int nbPlaces);
+#      I2Voiture::I2Voiture(int nbPlaces) : I2Vehicule(), _nbPlaces(nbPlaces)
+#      {
+#        QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
+#      }
+function generateConstructor(class, constructor, isInCpp)
+    constructorStr = ""
+    if my.isInCpp
+        constructorStr = "$(my.class.name: pascal)::"
+    else
+        constructorStr = "explicit "
+    endif
+    constructorStr += "$(my.class.name: pascal)("
+
+    # parameters
+    first = 1
+    for my.constructor.parameter as param
+        if first
+            first = 0
+        else
+            constructorStr += ", "
+        endif
+        constructorStr += "$(param.type) $(param.name: no)"
+        if defined (param.value) & param.value <> "" & !my.isInCpp
+            constructorStr += " = $(param.value: no)"
+        endif
+    endfor
+    if isTrue(my.class.isQt)
+        if count(my.constructor.parameter) > 0
+            constructorStr += ", "
+        endif
+        constructorStr += (my.isInCpp ?? "QObject* parent" ? "QObject* parent = nullptr")
+    endif
+
+    if my.isInCpp
+        constructorStr += ") \n     : "
+        # parent constructor
+        if defined(my.class.inherits) & string.length(my.class.inherits) > 0
+            constructorStr += "$(my.class.inherits: no) {"
+            if isTrue(my.class.isQt)
+                constructorStr += "parent"
+            endif
+            constructorStr += "}"
+        endif
+
+        constructorStr += "\n{\n"
+
+        # ownership
+        if isTrue(my.class.isQt)
+            constructorStr += "    QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);"
+        else
+            constructorStr += "\n"
+        endif
+
+        constructorStr += "\n}\n"
+    else
+        constructorStr += ");"
+    endif
+
+
+    return constructorStr
+endfunction
+
+######################################################
+# Handle only Qt QML properties
+# C++ "properties" don't have Q_PROPERTY macro (just getter/setter/signal)
+# e.g: Q_PROPERTY(bool possedeCasque READ possedeCasque WRITE setPossedeCasque NOTIFY possedeCasqueChanged);
+function generateQtPropertyDeclaration(class, property, isInCpp)
+    qtPropDec = ""
+    if isTrue(my.class.isQt)
+        # we only manage Qt QML properties
+        if defined(my.property.macro) & my.property.macro = "QML"
+            qtPropDec += "Q_PROPERTY("
+            isReadOnly = isTrue(my.property.readOnly)
+            type = isListType(my.property.type) ?? "Q" + my.property.type ? my.property.type
+
+            qtPropDec += "$(type) $(my.property.name: camel) READ $(my.property.name: camel)"
+            if !isReadOnly
+                qtPropDec += " WRITE set$(my.property.name: pascal)"
+            endif
+            qtPropDec += " NOTIFY $(my.property.name: camel)Changed)"
+        else
+            echo "[Warning][generateQtPropertyDeclaration()] Macro not specified or not valid, only macro=\"QML\" accepted. Ignoring this property generation..."
+        endif
+    else
+        echo "[Warning][generateQtPropertyDeclaration()] Request properties generation of a class that isn't based on Qt. Ignoring this property generation..."
+    endif
+    return qtPropDec
+endfunction
+
+######################################################
+# e.g:
+#  I2_QT5_QML_PROPERTY(int, vitesseMax)
+#  I2_CPP_QOBJECT_LIST_PROPERTY(I2Roue*, roues);
+#  I2_QML_QOBJECT_LIST_PROPERTY(I2Vitre*, vitres);
+function generateI2PropertyDeclaration(class, property, isInCpp)
+    i2PropDec = ""
+    if isTrue(my.class.isQt)
+        if defined(my.property.macro) & (my.property.macro = "I2_QML" | my.property.macro = "I2_CPP")
+            isList = isListType(my.property.type)
+
+            if my.property.macro = "I2_QML"
+                if isList
+                    i2PropDec += "I2_QML_QOBJECT_LIST"
+                else
+                    i2PropDec += "I2_QT5_QML"
+                endif
+            elsif my.property.macro = "I2_CPP"
+                if isList
+                    i2PropDec += "I2_CPP_QOBJECT_LIST"
+                else
+                    i2PropDec += "I2_QT5_CPP"
+                endif
+            endif
+
+            # readonly
+            if isTrue(my.property.readOnly) & !isList
+                i2PropDec += "_READONLY"
+            endif
+
+            i2PropDec += "_PROPERTY("
+            if isList
+                if regexp.match("(\\*)", my.property.type)
+                    typeLength = (string.length(my.property.type)-3)
+                else
+                    typeLength = (string.length(my.property.type)-2)
+                endif
+                type = string.substr(my.property.type, 5,typeLength)
+            elsif isI2Enum(package, my.property.type)
+                type = my.property.type + "::Value"
+            else
+                type = my.property.type
+            endif
+
+            i2PropDec += type + ", " + "$(my.property.name: camel)" + ")"
+        else
+            echo "[Warning][generateI2PropertyDeclaration()] Macro not specified or not valid, only macro=\"I2_QML\" or macro=\"I2_CPP\" accepted. Ignoring this property generation... {class: $(my.class.name), property:$(my.property.name)}"
+        endif
+    else
+        echo "[Warning][generateI2PropertyDeclaration()] Request properties generation of a class that isn't based on Qt. Ignoring this property generation... {class: $(my.class.name)}"
+    endif
+    return i2PropDec
+endfunction
+
+######################################################
+function generateQtPropertyGetter(class, property, isInCpp)
+    propGet = ""
+    if my.property.macro = "QT_CPP" | my.property.macro = "QML"
+        returnType = convertIfListType(my.property.type, isTrue(my.class.isQt))
+        if my.isInCpp
+            propGet = "$(.returnType) $(my.class.name:pascal)::$(my.property.name)() const \n{\n    return _$(my.property.name);\n}"
+        else
+            propGet = "$(.returnType) $(my.property.name)() const;"
+        endif
+    else
+        echo "[Warning][generateQtPropertyGetter()] Request property getter generation without valid macro attribute. Ignoring this property generation... {class: $(my.class.name), property: $(my.property.name)}"
+    endif
+    return propGet
+endfunction
+
+######################################################
+function generateQtPropertySetter(class, property, isInCpp)
+    propSet = ""
+    if my.property.macro = "QT_CPP" | my.property.macro = "QML"
+        parameterType = convertIfListType(my.property.type, isTrue(my.class.isQt))
+        if isClassType(my.property.type) & !isPointerType(my.property.type) & !isListType(my.property.type)
+            parameterType = "const $(parameterType)&"
+        endif
+        if my.isInCpp
+            propSet = "void $(my.class.name:pascal)::set$(my.property.name:pascal)($(parameterType) value)
+{
+    if (_$(my.property.name:camel) == value)
+        return;
+
+    _$(my.property.name:camel) = value;
+    Q_EMIT $(my.property.name:camel)Changed();
+}"
+        else
+            propSet = "void set$(my.property.name:pascal)($(parameterType) value);"
+        endif
+    else
+        echo "[Warning][generateQtPropertySetter()] Request property setter generation without valid macro attribute. Ignoring this property generation... {class: $(my.class.name), property: $(my.property.name)}"
+    endif
+    return propSet
+endfunction
+
+######################################################
+function generateQtPropertySignal(class, property)
+    propSig = ""
+    if my.property.macro = "QT_CPP" | my.property.macro = "QML"
+        propSig = "void $(my.property.name)Changed();"
+    else
+        echo "[Warning][generateQtPropertySignal()] Request property signal generation without valid macro attribute. Ignoring this property generation... {class: $(my.class.name), property: $(my.property.name)}"
+    endif
+    return propSig
+endfunction
+
+######################################################
+function generateQtPropertyAttribute(class, property)
+    propAttr = ""
+    if my.property.macro = "QT_CPP" | my.property.macro = "QML"
+        propAttr = convertIfListType(my.property.type, isTrue(my.class.isQt)) + " _$(my.property.name)"
+        if defined(my.property.value) & my.property.value <> ""
+            propAttr += " {$(my.property.value)};"
+        else
+            propAttr += " {};"
+        endif
+    else
+        echo "[Warning][generateQtPropertyAttribute()] Request property attribute generation without valid macro attribute. Ignoring this property generation... {class: $(my.class.name), property: $(my.property.name)}"
+    endif
+    return propAttr
+endfunction
+
+######################################################
+# Scan class to find appropriate includes
+# - scan inheritance / implementation / singleton
+# - scan constructors
+# - scan functions
+# - scan properties
+# - scan attributes
+#
+# The List type is handled
+# e.g: List<Roue*> will generate two includes
+#      #include <QList> // or <vector> in standard c++
+#      #include "Roue.h"
+# Template types are not handled yet
+# e.g: QHash<QString,QString> will generate one include
+#      #include <QHash>
+#
+function generateIncludes(class)
+    extIncludes = ""
+    projectIncludes = ""
+    i2Includes = ""
+
+    forwardDeclarationMsg = "// Replace by a forward declaration if the class content isn't used in the header"
+
+    # inheritance
+    if defined(my.class.inherits) & string.length(my.class.inherits) > 0
+        if isQtFrameworkClassType(my.class.inherits) & !regexp.match("($(my.class.inherits))", extIncludes)
+            extIncludes += "#include <$(my.class.inherits)>\n"
+        elsif !isQtFrameworkClassType(my.class.inherits) & !regexp.match("($(my.class.inherits))", projectIncludes)
+            projectIncludes += "#include \"$(my.class.inherits:lower).h\"\n"
+        endif
+    endif
+
+    # implements
+    if defined(my.class.implements) & string.length(my.class.implements) > 0
+        if isQtFrameworkClassType(my.class.implements) & !regexp.match("($(my.class.implements))", extIncludes)
+            extIncludes += "#include <$(my.class.implements)>\n"
+        elsif !isQtFrameworkClassType(my.class.implements) & !regexp.match("($(my.class.implements:lower))", projectIncludes)
+            projectIncludes += "#include \"$(my.class.implements:lower).h\"\n"
+        endif
+    endif
+
+    # singleton
+    if isQmlSingleton(my.class)
+        if !regexp.match("(QObject)", extIncludes)
+            extIncludes += "#include <QObject>\n"
+        endif
+        if !regexp.match("(QJSEngine)", extIncludes)
+            extIncludes += "#include <QJSEngine>\n"
+        endif
+        if !regexp.match("(QQmlEngine)", extIncludes)
+            extIncludes += "#include <QQmlEngine>\n"
+        endif
+    endif
+
+    # constructors
+    for my.class.constructor
+        for constructor.parameter
+            classType = extractClassNameFromType(parameter.type)
+            if !(classType = "")
+                if isStandardClassType(classType) & !regexp.match("($(extractStandardClassNameFromType(classType)))",extIncludes)
+                    extIncludes += "#include <$(extractStandardClassNameFromType(classType))>\n"
+                elsif isQtFrameworkClassType(classType) & !regexp.match("($(classType))",extIncludes)
+                    extIncludes += "#include <$(classType)>\n"
+                elsif !isQtFrameworkClassType(classType) & !isStandardClassType(classType) & !regexp.match("($(classType:lower))",projectIncludes)
+                    projectIncludes += "#include \"$(classType:lower).h\"\n"
+                endif
+            endif
+        endfor
+    endfor
+
+    # functions
+    for my.class.function
+        for function.parameter
+            classType = extractClassNameFromType(parameter.type)
+            if !(classType = "")
+                if isStandardClassType(classType) & !regexp.match("($(extractStandardClassNameFromType(classType)))",extIncludes)
+                    extIncludes += "#include <$(extractStandardClassNameFromType(classType))>\n"
+                elsif isQtFrameworkClassType(classType) & !regexp.match("($(classType))",extIncludes)
+                    extIncludes += "#include <$(classType)>"
+                    if isPointerType(parameter.type)
+                        extIncludes += forwardDeclarationMsg
+                    endif
+                    extIncludes += "\n"
+                elsif !isQtFrameworkClassType(classType) & !isStandardClassType(classType) & !regexp.match("($(classType:lower))",projectIncludes)
+                    projectIncludes += "#include \"$(classType:lower).h\""
+                    if isPointerType(parameter.type)
+                        projectIncludes += forwardDeclarationMsg
+                    endif
+                    projectIncludes += "\n"
+                endif
+            endif
+        endfor
+    endfor
+
+    # properties
+    for my.class.property
+        classType = extractClassNameFromType(property.type)
+
+        # I2quick includes
+        if (defined(property.macro) & (property.macro = "I2_QML" | property.macro = "I2_CPP"))
+            if classType = "List"
+                if !regexp.match("(i2listpropertyhelpers)",i2Includes)
+                    i2Includes += "#include \"helpers/i2listpropertyhelpers.h\"\n"
+                endif
+            elsif property.macro = "I2_QML"
+                if !regexp.match("(i2qmlpropertyhelpers)",i2Includes)
+                    i2Includes += "#include \"helpers/i2qmlpropertyhelpers.h\"\n"
+                endif
+            elsif property.macro = "I2_CPP"
+                if !regexp.match("(i2cpponlypropertyhelpers)",i2Includes)
+                    i2Includes += "#include \"helpers/i2cpponlypropertyhelpers.h\"\n"
+                endif
+            endif
+        endif
+
+        if string.length(classType) > 0
+            # List case
+            if classType = "List"
+                if defined(property.macro) & (property.macro = "QML" | property.macro = "QT_CPP") & !regexp.match("(QList)",extIncludes)
+                    extIncludes += "#include <QList>\n"
+                elsif !defined(property.macro) & !regexp.match("(vector)",extIncludes)
+                    extIncludes += "#include <vector>\n"
+                endif
+                # handle template classes
+                subClassType = retrieveListUsedType(property.type)
+                if isPointerType(subClassType)
+                    subClassType = string.substr(subClassType, 0, string.length(subClassType)-2)
+                endif
+
+                if string.length(subClassType) > 0
+                    if isQtFrameworkClassType(subClassType) & !regexp.match("($(subClassType))",extIncludes)
+                        extIncludes += "#include <$(subClassType)>\n"
+                    elsif !isQtFrameworkClassType(classType) & !regexp.match("($(subClassType:lower))",projectIncludes)
+                        projectIncludes += "#include \"$(subClassType:lower).h\"\n"
+                    endif
+                endif
+            elsif isQtFrameworkClassType(classType) & !regexp.match("($(classType))",extIncludes)
+                extIncludes += "#include <$(classType)>\n"
+            elsif !isQtFrameworkClassType(classType) & !regexp.match("($(classType:lower))",projectIncludes)
+                projectIncludes += "#include \"$(classType:lower).h\"\n"
+            endif
+        endif
+    endfor
+
+    # attributes
+    for my.class.attribute
+        classType = extractClassNameFromType(attribute.type)
+        if !(classType = "")
+            # List case
+            if classType = "List"
+                if isTrue(class.isQt) & !regexp.match("(QList)",extIncludes)
+                    extIncludes += "#include <QList>\n"
+                elsif !defined(attribute.macro) & !regexp.match("(vector)",extIncludes)
+                    extIncludes += "#include <vector>\n"
+                endif
+                # handle template classes
+                subClassType = retrieveListUsedType(attribute.type)
+                if string.length(subClassType) > 0
+                    if isQtFrameworkClassType(subClassType) & !regexp.match("($(subClassType))",extIncludes)
+                        extIncludes += "#include <$(subClassType)>"
+                        if isPointerType(subClassType)
+                            extIncludes += forwardDeclarationMsg
+                        endif
+                        extIncludes += "\n"
+                    elsif !isQtFrameworkClassType(classType) & !regexp.match("($(subClassType:lower))",projectIncludes)
+                        if isPointerType(subClassType)
+                            cleanSubType = extractClassNameFromType(subClassType)
+                            projectIncludes += "#include \"$(cleanSubType:lower).h\" $(forwardDeclarationMsg)"
+                        else
+                            projectIncludes += "#include \"$(subClassType:lower).h\""
+                        endif
+                        projectIncludes += "\n"
+                    endif
+                endif
+            elsif isQtFrameworkClassType(classType) & !regexp.match("($(classType))",extIncludes)
+                extIncludes += "#include <$(classType)> $(forwardDeclarationMsg)\n"
+            elsif !isQtFrameworkClassType(classType) & !regexp.match("($(classType:lower))",projectIncludes)
+                projectIncludes += "#include \"$(classType:lower).h\" $(forwardDeclarationMsg)\n"
+            endif
+        endif
+    endfor
+
+    includes = ""
+    if string.length(extIncludes) > 0
+        includes += "$(extIncludes)\n"
+    endif
+    if string.length(i2Includes) > 0
+        includes += "$(i2Includes)\n"
+    endif
+    if string.length(projectIncludes) > 0
+        includes += "$(projectIncludes)\n"
+    endif
+    return includes
+endfunction
+
+
+######################################################
+function generateEnumHeader(enum)
+    output getSourceFolder(package.name) + "/"+ "$(my.enum.name: pascal, lower).h"
+    >$(generateIfDef(my.enum.name,1))
+    >
+    >$(generateCopyright())
+    >
+    if defined (enum.macro) & enum.macro = "ENUM_I2"
+        > #include "helpers/i2enumhelpers.h"
+        >
+    endif
+    >$(generateEnumContent(my.enum))
+    >
+    >$(generateIfDef(my.enum.name,0))
+endfunction
+
+
+######################################################
+# Handle the entire .h file generation
+#
+function generateHeader(class)
+    headerContent = ""
+    headerContent = generateCopyright() + "\n\n"
+    headerContent += generateIfDef(my.class.name, 1) + "\n\n"
+    headerContent += generateIncludes(my.class)
+
+    inheriting = defined(my.class.inherits) & string.length(my.class.inherits) > 0 | isQmlSingleton(my.class)
+    implementing = defined(my.class.implements) & string.length(my.class.implements) > 0
+
+    headerContent += "class $(my.class.name)"
+    if inheriting
+        finalInherits = isQmlSingleton(my.class) ?? "QObject" ? my.class.inherits
+        headerContent += ": public $(finalInherits)"
+        if implementing
+            headerContent += ", public $(my.class.implements)"
+        endif
+    else
+        if implementing
+            headerContent += ": public $(my.class.implements)"
+        endif
+    endif
+
+    headerContent += "\n{\n"
+
+    if isTrue(my.class.isQt) | isQmlSingleton(my.class)
+        headerContent += "    Q_OBJECT\n"
+    endif
+
+    if hasMacro(my.class)
+        for my.class.property as prop where (prop.macro = "I2_QML" | prop.macro = "I2_CPP")
+            headerContent += "\n"
+            headerContent += "    " +generateI2PropertyDeclaration(my.class, prop, 0)
+        endfor
+
+        for my.class.property as prop where prop.macro = "QML"
+            headerContent += "\n"
+            headerContent += "    " +generateQtPropertyDeclaration(my.class, prop, 0)
+        endfor
+        headerContent += "\n"
+    endif
+
+    if hasPublicMember(my.class, 0)
+        headerContent += "\npublic:\n"
+        needExtraSectionHeader = 0
+        for class.constructor where constructor.access = "public"
+            headerContent += "    " + generateConstructor(class, constructor, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        for class.destructor where destructor.access = "public"
+            headerContent += "    " + generateDestructor(class, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        if (isTrue(my.class.isSingleton) | isTrue(my.class.isQMLSingleton))
+            headerContent += "    static $(my.class.name: pascal)& instance(); //cpp singleton\n"
+            needExtraSectionHeader = 1
+        endif
+        if isTrue(my.class.isQMLSingleton)
+            headerContent += "    static QObject* qmlSingleton(QQmlEngine* engine, QJSEngine* scriptEngine); //qml singleton\n"
+            needExtraSectionHeader = 1
+        endif
+        for class.function where function.access = "public"
+            headerContent += "    " + generateFunction(class, function, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        if hasQProperty(my.class)
+            headerContent += "\n"
+            for my.class.property where (property.macro = "QT_CPP" | property.macro = "QML")
+                headerContent += "    "+generateQtPropertyGetter(my.class, property, 0) + "\n"
+                needExtraSectionHeader = 1
+            endfor
+            headerContent += "\n"
+            for my.class.property where (property.macro = "QML" | (property.macro = "QT_CPP" & !isTrue(property.readOnly)))
+                headerContent += "    "+generateQtPropertySetter(my.class, property, 0) + "\n"
+                needExtraSectionHeader = 1
+            endfor
+        endif
+        if hasPublicAttribute(my.class)
+            if needExtraSectionHeader
+                headerContent +=  "\nprivate:\n"
+            endif
+            headerContent += "    " +generateAttributesForAccessType(class, "public")
+        endif
+    endif
+
+    if hasSignal(my.class)
+        headerContent += "\nQ_SIGNALS:\n"
+        for class.signal where signal.access = "public"
+            headerContent += "    " + generateFunction(class, signal, 0) + "\n"
+        endfor
+        if hasQProperty(my.class)
+            for my.class.property where (property.macro = "QT_CPP" | property.macro = "QML")
+                headerContent += "    "+generateQtPropertySignal(my.class, property) + "\n"
+            endfor
+        endif
+    endif
+
+    if hasPublicSlot(my.class)
+        headerContent += "\npublic Q_SLOTS:\n"
+        for class.slot where slot.access = "public"
+            headerContent += "    " + generateFunction(class, slot, 0) + "\n"
+        endfor
+    endif
+
+    if hasProtectedMember(my.class, 0)
+        headerContent += "\nprotected:\n"
+        needExtraSectionHeader = 0
+        for class.constructor where constructor.access = "protected"
+            headerContent += "    " + generateConstructor(class, constructor, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        for class.destructor where destructor.access = "protected"
+            headerContent += "    " + generateDestructor(class, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        for class.function where function.access = "protected"
+            headerContent += "    " + generateFunction(class, function, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        for my.class.property where ((property.macro = "QT_CPP") & isTrue(property.readOnly))
+            headerContent += "    "+generateQtPropertySetter(my.class, property, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        if hasProtectedAttribute(my.class)
+            if needExtraSectionHeader
+                headerContent +=  "\nprotected:\n"
+            endif
+            headerContent += "    "+ generateAttributesForAccessType(class, "protected")
+        endif
+    endif
+
+    if hasProtectedSlot(my.class)
+        headerContent += "\nprotected Q_SLOTS:\n"
+        for class.slot where slot.access = "protected"
+            headerContent += "    " + generateFunction(class, slot, 0) + "\n"
+        endfor
+    endif
+
+    if hasPrivateSlot(my.class)
+        headerContent += "\nprivate Q_SLOTS:\n"
+        for class.slot where slot.access = "private"
+            headerContent += "    " + generateFunction(class, slot, 0) + "\n"
+        endfor
+    endif
+
+    if hasPrivateMember(my.class, 0)
+        headerContent += "\nprivate:\n"
+        needExtraSectionHeader = 0
+        for class.constructor where constructor.access = "private"
+            headerContent += "    " + generateConstructor(class, constructor, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        for class.destructor where destructor.access = "private"
+            headerContent += "    " + generateDestructor(class, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        for class.function where function.access = "private"
+            headerContent += "    " + generateFunction(class, function, 0) + "\n"
+            needExtraSectionHeader = 1
+        endfor
+        if (hasPrivateAttribute(my.class) | hasQProperty(my.class))
+            if needExtraSectionHeader
+                headerContent +=  "\nprivate:\n"
+            endif
+            if hasPrivateAttribute(my.class)
+                headerContent += "    " + generateAttributesForAccessType(class, "private")
+            endif
+            if hasQProperty(my.class)
+                for my.class.property where (property.macro = "QT_CPP" | property.macro = "QML")
+                    headerContent += "    "+generateQtPropertyAttribute(my.class, property) + "\n"
+                endfor
+            endif
+        endif
+    endif
+
+    headerContent += "};\n\n"
+
+    if isQmlSingleton(my.class)
+        headerContent += "QML_DECLARE_TYPE($(my.class.name:Pascal))\n\n"
+    endif
+
+    headerContent += generateIfDef(my.class.name, 0)
+
+    # open & write in the file
+    output getSourceFolder(package.name) + "/"+ "$(my.class.name: pascal, lower).h"
+.template 1
+$(headerContent)
+.endtemplate
+endfunction
+
+
+######################################################
+# Handle the entire .cpp file generation
+#
+function generateCpp(class)
+    cppContent = generateCopyright() + "\n\n"
+
+    cppContent += "#include \"$(class.name: lower).h\"\n\n"
+
+    if (isTrue(my.class.isQt) | isTrue(my.class.isQMLSingleton))
+        cppContent += "#include <QQmlEngine>\n\n"
+    endif
+
+    if hasPublicMember(my.class, 1)
+        for class.constructor where (constructor.access = "public" | constructor.access = "protected")
+            cppContent += generateConstructor(class, constructor, 1) + "\n"
+        endfor
+        for class.destructor where (destructor.access = "public" | destructor.access = "protected")
+            cppContent += generateDestructor(class, 1) + "\n"
+        endfor
+
+        if isTrue(my.class.isSingleton) | isTrue(my.class.isQMLSingleton)
+            cppContent += "$(my.class.name: pascal)& $(my.class.name: pascal)::instance()
+{
+    static $(my.class.name: pascal) instance;"
+
+            if isTrue(my.class.isQMLSingleton)
+                cppContent += "\n    QQmlEngine::setObjectOwnership(&instance, QQmlEngine::CppOwnership);"
+            endif
+
+            cppContent += "\n    return instance;\n}\n\n"
+        endif
+
+        if isTrue(my.class.isQMLSingleton)
+            cppContent += "QObject* $(my.class.name: pascal)::qmlSingleton(QQmlEngine* engine, QJSEngine* scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    return &$(my.class.name: pascal)::instance();
+}
+
+"
+            cppContent += "    "
+        endif
+        for class.function where (function.access = "public" | function.access = "protected")
+            cppContent += generateFunction(class, function, 1) + "\n\n"
+        endfor
+        if hasQProperty(my.class)
+            for my.class.property where (property.macro = "QT_CPP" | property.macro = "QML")
+                cppContent += generateQtPropertyGetter(my.class, property, 1) + "\n\n"
+            endfor
+            for my.class.property where (property.macro = "QT_CPP" | property.macro = "QML")
+                cppContent += generateQtPropertySetter(my.class, property, 1) + "\n\n"
+            endfor
+        endif
+    endif
+
+    if hasPublicSlot(my.class)
+        for class.slot where (slot.access = "public" | slot.access = "protected")
+            cppContent += generateFunction(class, slot, 1) + "\n\n"
+        endfor
+    endif
+
+    if hasPrivateSlot(my.class)
+        for class.slot where slot.access = "private"
+            cppContent += generateFunction(class, slot, 1) + "\n\n"
+        endfor
+    endif
+
+    if hasPrivateMember(my.class, 1)
+        for class.constructor where constructor.access = "private"
+            cppContent += generateConstructor(class, constructor, 1) + "\n\n"
+        endfor
+        for class.destructor where destructor.access = "private"
+            cppContent += generateDestructor(class, 1) + "\n\n"
+        endfor
+        for class.function where function.access = "private"
+            cppContent += generateFunction(class, function, 1) + "\n\n"
+        endfor
+    endif
+
+    # open & write in the file
+    output getSourceFolder(package.name)+"/"+ "$(my.class.name: pascal, lower).cpp"
+.template 1
+$(cppContent)
+.endtemplate
+endfunction
+
+function generateProjectFiles(packages)
+.template 1
+.####################################################################################
+.echo "Generating packages.cmake ..."
+.output "$(global.uml_generationFolder)/packages.cmake"
+# File list
+target_sources(${PROJECT_NAME} PRIVATE
+.for packages. as package
+.packageName = (string.length(package.name) > 0) ?? "$(package.name:camel,lower)/" ? ""
+.for package. as class
+.if defined(class.name)
+.if name(class) = "enum" | name(class) = "interface"
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/$(packageName)$(class.name:camel,lower).h
+.elsif name(class) = "class"
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/$(packageName)$(class.name:camel,lower).cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/$(packageName)$(class.name:camel,lower).h
+.endif
+.endif
+.endfor
+.endfor
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/packages)
+
+.####################################################################################
+.echo "Generating packages.pri ..."
+.output "$(global.uml_generationFolder)/packages.pri"
+
+INCLUDEPATH += $$PWD
+
+QT += qml quick
+
+SOURCES += \\
+.for packages. as package
+.packageName = (string.length(package.name) > 0) ?? "$(package.name:camel,lower)/" ? ""
+.for package. as class
+.if defined(class.name) & name(class) = "class"
+    $$PWD/$(packageName)$(class.name:camel,lower).cpp \\
+.endif
+.endfor
+.endfor
+
+HEADERS += \\
+.for packages. as package
+.packageName = (string.length(package.name) > 0) ?? "$(package.name:camel,lower)/" ? ""
+.for package. as class
+.if defined(class.name)
+    $$PWD/$(packageName)$(class.name:camel,lower).h \\
+.endif
+.endfor
+.endfor
+.endtemplate
+endfunction
+
+
+######################################################
+# Main
+#
+
+# create the generation folder
+if string.length(global.uml_generationFolder) > 0
+    directory.create(global.uml_generationFolder)
+endif
+
+echo "Generating C++ classes into $(global.uml_generationFolder) folder"
+
+
+if global.uml_generateProjectFiles
+    generateProjectFiles()
+endif
+
+for packages. as package
+
+    classesCount = count(package.class) + count(package.enum) + count(package.interface)
+    classWord = (classesCount = 1) ?? "class" ? "classes"
+    packageStr = (string.length(package.name) > 0) ?? "for package $(package.name)" ? "without package."
+
+    echo "Generating $(classesCount) $(classWord) $(packageStr)"
+
+    # create the package folder if needed
+    if defined(package.name) & string.length(package.name) > 0
+        echo "create package folder for $(global.uml_generationFolder)/$(package.name:camel,lower)"
+        directory.create("$(global.uml_generationFolder)/$(package.name:camel,lower)")
+    endif
+
+    for package. as class
+        if defined(class.name)
+            # handle on the elements
+            if name(class) = "enum"
+                generateEnumHeader(class)
+            elsif name(class) = "interface"
+                generateHeader(class)
+            elsif name(class) = "class"
+                generateHeader(class)
+                generateCpp(class)
+            endif
+        else
+            if defined(class.id)
+                echo "warning: no name found for element number " + class.id + ". Class won't be created."
+            else
+                echo "warning: no name found for a class, it won't be created."
+            endif
+        endif
+    endfor
+endfor
+
+echo "Generation finished."
+
+.endtemplate

@@ -1,0 +1,1178 @@
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT wifi 5670
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;08:46:16.000781;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;08:46:16.000797;ERROR;igs_start_with_device;IP address could not be determined on device wifi : our agent will NOT start
+BULLSHIT;03/11/2025;08:46:16.000797;DEBUG;igs_stop;ingescape already stopped
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT Wi-Fi 5670
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;08:46:50.000657;INFO;igs_start_with_device;Starting with ip address 172.17.202.80 and port 5670 on device Wi-Fi
+BULLSHIT;03/11/2025;08:46:50.000657;DEBUG;s_init_loop;loop init
+BULLSHIT;03/11/2025;08:46:50.000749;DEBUG;s_run_loop;loop starting
+BULLSHIT;03/11/2025;08:47:18.000041;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;08:47:18.000041;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:47:18.000042;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;08:47:18.000042;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;08:47:18.000042;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;08:47:18.000043;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;08:47:18.000043;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;08:47:18.000043;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;08:47:18.000043;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;08:47:18.000044;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;08:47:18.000044;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;08:47:18.000044;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;08:47:18.000045;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;08:47:18.000051;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;08:47:18.000052;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;08:47:18.000053;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;08:47:18.000053;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;08:47:18.000055;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;08:47:18.000056;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;08:47:18.000056;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;08:47:18.000057;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;08:47:18.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;08:47:18.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;08:47:18.000090;DEBUG;s_manage_zyre_incoming;received MAP command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:47:18.000096;DEBUG;s_manage_zyre_incoming;received MAP command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:47:18.000096;DEBUG;igsagent_mapping_add;mapping combination current_player->Whiteboard.lastChatMessage already exists and will not be duplicated
+BULLSHIT;03/11/2025;08:47:18.000963;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;08:47:18.000963;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;08:47:18.000963;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;08:47:18.000963;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;08:47:21.000527;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:47:21.000527;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;08:48:03.000174;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:03.000174;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:04.000140;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:04.000140;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:04.000653;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:04.000653;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:04.000870;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:04.000870;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:05.000269;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:05.000270;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:05.000442;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:05.000442;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:05.000659;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:05.000659;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:05.000935;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:05.000935;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:48:06.000157;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:48:06.000157;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:49:24.000460;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:24.000460;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:49:25.000124;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:25.000125;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:49:29.000412;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:29.000413;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:49:30.000107;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:30.000108;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:49:30.000320;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:30.000320;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:49:30.000702;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:30.000702;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:49:30.000991;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:30.000991;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:49:32.000811;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:32.000811;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;08:49:52.000646;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:52.000646;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:53.000290;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:53.000290;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:53.000469;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:53.000470;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:53.000652;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:53.000652;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:53.000868;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:53.000868;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:54.000385;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:54.000386;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:54.000590;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:54.000590;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:54.000784;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:54.000784;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:54.000986;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:54.000986;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:55.000219;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:55.000219;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:55.000430;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:55.000430;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:55.000978;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:55.000979;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:49:56.000200;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:49:56.000201;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:01.000494;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:01.000494;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:01.000683;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:01.000683;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:01.000843;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:01.000844;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:02.000046;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:02.000046;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:02.000220;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:02.000220;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:02.000404;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:02.000404;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:02.000599;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:02.000600;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:02.000831;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:02.000831;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:03.000120;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:03.000120;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:03.000409;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:03.000409;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:03.000663;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:03.000664;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:03.000904;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:03.000904;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:04.000129;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:04.000130;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:06.000013;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:06.000014;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:07.000105;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:07.000106;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:34.000433;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:34.000434;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:34.000996;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:34.000996;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:35.000231;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:35.000231;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:39.000478;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:39.000478;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:50:39.000700;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:39.000700;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:50:40.000091;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:40.000091;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:50:40.000278;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:40.000278;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:50:40.000506;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:40.000506;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;08:50:43.000514;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:43.000515;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:50:44.000033;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:44.000034;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:50:44.000263;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:44.000263;DEBUG;model_write;set input bullshit_called to bool 1
+BULLSHIT;03/11/2025;08:50:50.000988;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:50.000989;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:51.000217;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:51.000219;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:51.000777;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:51.000778;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:50:52.000013;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:50:52.000014;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:53:19.000328;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:53:19.000328;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:53:19.000944;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:53:19.000944;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:53:20.000407;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:53:20.000407;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:53:20.000622;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:53:20.000622;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:53:20.000830;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;08:53:20.000830;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;08:53:35.000947;DEBUG;s_manage_zyre_incoming;received UNMAP command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;09:07:43.000418;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT Wi-Fi 5670
+BULLSHIT;03/11/2025;09:07:43.000418;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;09:07:43.000418;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;09:07:43.000418;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;09:07:43.000418;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;09:07:43.000418;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;09:07:43.000423;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;09:07:43.000423;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;09:07:43.000423;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;09:07:43.000423;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;09:07:43.000435;INFO;igs_start_with_device;Starting with ip address 172.17.202.80 and port 5670 on device Wi-Fi
+BULLSHIT;03/11/2025;09:07:43.000435;DEBUG;s_init_loop;loop init
+BULLSHIT;03/11/2025;09:07:43.000492;DEBUG;s_run_loop;loop starting
+BULLSHIT;03/11/2025;09:07:43.000540;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;09:07:43.000540;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;09:07:43.000542;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;09:07:43.000542;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;09:07:43.000542;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;09:07:43.000543;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;09:07:43.000543;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;09:07:43.000543;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;09:07:43.000543;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;09:07:43.000544;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;09:07:43.000544;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;09:07:43.000544;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;09:07:43.000544;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;09:07:43.000545;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;09:07:43.000546;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;09:07:43.000547;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;09:07:43.000547;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;09:07:43.000547;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;09:07:43.000548;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;09:07:43.000548;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:07:43.000548;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:07:43.000568;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;09:07:43.000568;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;09:07:43.000958;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;09:07:43.000958;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:07:43.000958;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;09:07:43.000958;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:10:20.000930;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id 9F38A4A520F6AB46BDE615B4597AA8A6 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;09:10:20.000930;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (9F38A4A520F6AB46BDE615B4597AA8A6)
+BULLSHIT;03/11/2025;09:10:20.000931;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://9F38A4A520F6AB46BDE615B4597AA8A6
+BULLSHIT;03/11/2025;09:10:20.000931;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;09:10:20.000931;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;09:10:20.000931;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;09:10:20.000931;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;09:10:20.000932;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;09:10:20.000932;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;09:10:20.000932;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;09:10:20.000932;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;09:10:20.000933;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;09:10:20.000936;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;09:10:20.000936;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;09:10:20.000936;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;09:10:20.000936;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;09:10:20.000936;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;09:10:20.000936;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:10:20.000936;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:10:20.000953;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;09:10:20.000953;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;09:10:21.000468;DEBUG;s_manage_zyre_incoming;<-Whiteboard (9F38A4A520F6AB46BDE615B4597AA8A6) exited
+BULLSHIT;03/11/2025;09:10:21.000469;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:10:21.000469;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (9F38A4A520F6AB46BDE615B4597AA8A6)
+BULLSHIT;03/11/2025;09:10:21.000478;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;09:10:21.000478;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS
+BULLSHIT;03/11/2025;09:10:21.000964;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;09:10:21.000964;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:10:21.000964;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;09:10:21.000964;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:10:22.000446;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id B923B2C4555F0644AB071A7850769B22 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://B923B2C4555F0644AB071A7850769B22
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;09:10:22.000452;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;09:10:22.000453;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;09:10:22.000453;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;09:10:22.000455;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;09:10:22.000455;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;09:10:22.000456;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;09:10:22.000456;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;09:10:22.000458;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;09:10:22.000458;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:10:22.000458;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:10:22.000474;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;09:10:22.000474;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;09:10:22.000969;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;09:10:22.000969;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:10:22.000970;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;09:10:22.000970;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:10:23.000381;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;09:10:23.000381;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT Wi-Fi 5670
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;09:22:32.000660;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;09:22:32.000668;INFO;igs_start_with_device;Starting with ip address 172.17.202.80 and port 5670 on device Wi-Fi
+BULLSHIT;03/11/2025;09:22:32.000668;DEBUG;s_init_loop;loop init
+BULLSHIT;03/11/2025;09:22:32.000736;DEBUG;s_run_loop;loop starting
+BULLSHIT;03/11/2025;09:22:32.000792;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id B923B2C4555F0644AB071A7850769B22 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;09:22:32.000792;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;09:22:32.000793;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://B923B2C4555F0644AB071A7850769B22
+BULLSHIT;03/11/2025;09:22:32.000793;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;09:22:32.000793;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;09:22:32.000793;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;09:22:32.000794;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;09:22:32.000794;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;09:22:32.000794;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;09:22:32.000795;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;09:22:32.000795;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;09:22:32.000795;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;09:22:32.000797;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;09:22:32.000797;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;09:22:32.000800;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;09:22:32.000801;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;09:22:32.000801;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;09:22:32.000801;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;09:22:32.000801;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;09:22:32.000801;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;09:22:32.000801;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;09:22:32.000802;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;09:22:32.000802;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;09:22:32.000802;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;09:22:32.000802;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;09:22:32.000802;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;09:22:32.000802;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;09:22:32.000803;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;09:22:32.000803;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;09:22:32.000803;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;09:22:32.000803;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;09:22:32.000803;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;09:22:32.000808;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;09:22:32.000809;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;09:22:32.000809;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;09:22:32.000809;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:22:32.000810;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;09:23:57.000454;DEBUG;s_manage_zyre_incoming;received SET_INPUT command from Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;09:23:57.000455;DEBUG;model_write;set input cards_played to data | size: 3 bytes
+BULLSHIT;03/11/2025;09:24:11.000449;DEBUG;model_write;set output player_turn to string alice
+BULLSHIT;03/11/2025;09:24:11.000450;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes player_turn string (6 bytes)
+BULLSHIT;03/11/2025;09:24:11.000450;DEBUG;model_write;set output game_state to string STARTED
+BULLSHIT;03/11/2025;09:24:11.000451;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes game_state string (8 bytes)
+BULLSHIT;03/11/2025;09:24:11.000452;DEBUG;model_write;set output last_action to string Game started: alice,bob\n
+BULLSHIT;03/11/2025;09:24:11.000452;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (25 bytes)
+BULLSHIT;03/11/2025;09:24:16.000905;DEBUG;model_write;set output last_action to string Not your turn! Current: alice
+BULLSHIT;03/11/2025;09:24:16.000906;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (30 bytes)
+BULLSHIT;03/11/2025;09:24:42.000648;DEBUG;model_write;set output last_action to string Not your turn! Current: alice
+BULLSHIT;03/11/2025;09:24:42.000649;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (30 bytes)
+BULLSHIT;03/11/2025;09:24:44.000316;DEBUG;model_write;set output last_action to string No one played!
+BULLSHIT;03/11/2025;09:24:44.000316;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (15 bytes)
+BULLSHIT;03/11/2025;09:25:10.000465;DEBUG;model_write;set output player_turn to string alice
+BULLSHIT;03/11/2025;09:25:10.000466;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes player_turn string (6 bytes)
+BULLSHIT;03/11/2025;09:25:10.000466;DEBUG;model_write;set output game_state to string STARTED
+BULLSHIT;03/11/2025;09:25:10.000467;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes game_state string (8 bytes)
+BULLSHIT;03/11/2025;09:25:10.000467;DEBUG;model_write;set output last_action to string Game started: alice,bob\n
+BULLSHIT;03/11/2025;09:25:10.000467;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (25 bytes)
+BULLSHIT;03/11/2025;09:25:40.000655;DEBUG;model_write;set output last_action to string Not your turn! Current: alice
+BULLSHIT;03/11/2025;09:25:40.000655;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (30 bytes)
+BULLSHIT;03/11/2025;09:26:00.000877;DEBUG;model_write;set output last_action to string No one played!
+BULLSHIT;03/11/2025;09:26:00.000878;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (15 bytes)
+BULLSHIT;03/11/2025;09:28:31.000521;DEBUG;model_write;set output player_turn to string alice
+BULLSHIT;03/11/2025;09:28:31.000521;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes player_turn string (6 bytes)
+BULLSHIT;03/11/2025;09:28:31.000522;DEBUG;model_write;set output game_state to string STARTED
+BULLSHIT;03/11/2025;09:28:31.000522;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes game_state string (8 bytes)
+BULLSHIT;03/11/2025;09:28:31.000522;DEBUG;model_write;set output last_action to string Game started: alice,bob\n
+BULLSHIT;03/11/2025;09:28:31.000522;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (25 bytes)
+BULLSHIT;03/11/2025;09:28:33.000866;DEBUG;model_write;set output last_action to string Not your turn! Current: alice
+BULLSHIT;03/11/2025;09:28:33.000867;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (30 bytes)
+BULLSHIT;03/11/2025;09:28:43.000701;DEBUG;model_write;set output player_turn to string bob\n
+BULLSHIT;03/11/2025;09:28:43.000701;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes player_turn string (5 bytes)
+BULLSHIT;03/11/2025;09:28:43.000701;DEBUG;model_write;set output last_action to string 🎴 alice claims: bob
+BULLSHIT;03/11/2025;09:28:43.000701;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (23 bytes)
+BULLSHIT;03/11/2025;09:28:53.000344;DEBUG;model_write;set output last_action to string Not your turn! Current: bob\n
+BULLSHIT;03/11/2025;09:28:53.000345;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (29 bytes)
+BULLSHIT;03/11/2025;09:29:00.000052;DEBUG;model_write;set output player_turn to string alice
+BULLSHIT;03/11/2025;09:29:00.000052;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes player_turn string (6 bytes)
+BULLSHIT;03/11/2025;09:29:00.000053;DEBUG;model_write;set output game_state to string STARTED
+BULLSHIT;03/11/2025;09:29:00.000053;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes game_state string (8 bytes)
+BULLSHIT;03/11/2025;09:29:00.000054;DEBUG;model_write;set output last_action to string Game started: alice,bob\n
+BULLSHIT;03/11/2025;09:29:00.000054;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (25 bytes)
+BULLSHIT;03/11/2025;09:29:05.000186;DEBUG;model_write;set output player_turn to string bob\n
+BULLSHIT;03/11/2025;09:29:05.000186;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes player_turn string (5 bytes)
+BULLSHIT;03/11/2025;09:29:05.000186;DEBUG;model_write;set output last_action to string 🎴 alice claims: as
+BULLSHIT;03/11/2025;09:29:05.000187;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (22 bytes)
+BULLSHIT;03/11/2025;09:29:08.000308;DEBUG;model_write;set output winner to string bob
+BULLSHIT;03/11/2025;09:29:08.000309;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes winner string (4 bytes)
+BULLSHIT;03/11/2025;09:29:08.000309;DEBUG;model_write;set output game_state to string FINISHED
+BULLSHIT;03/11/2025;09:29:08.000310;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes game_state string (9 bytes)
+BULLSHIT;03/11/2025;09:29:08.000310;DEBUG;model_write;set output last_action to string 🚨 BULLSHIT! alice was lying! bob wins!
+BULLSHIT;03/11/2025;09:29:08.000310;DEBUG;network_publish_output;BULLSHIT(004297CFC8776C48B0CE5BD962FB3212) publishes last_action string (42 bytes)
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;<-Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF) exited
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;<-Whiteboard (B923B2C4555F0644AB071A7850769B22) exited
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;10:42:17.000054;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;10:42:17.000069;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id B923B2C4555F0644AB071A7850769B22 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://B923B2C4555F0644AB071A7850769B22
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;10:42:17.000132;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;10:42:17.000272;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;10:42:17.000272;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;10:42:17.000272;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;10:42:17.000335;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;10:42:17.000820;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;10:42:17.000914;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS
+BULLSHIT;03/11/2025;10:42:18.000268;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;10:42:18.000300;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS
+BULLSHIT;03/11/2025;10:42:18.000300;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;10:42:18.000300;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:18.000300;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:18.000503;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:18.000503;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:18.000846;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:18.000846;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:18.000846;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:18.000846;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:18.000868;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;10:42:18.000868;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;10:42:18.000868;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;10:42:18.000913;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:18.000913;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:18.000914;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:18.000914;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:18.000999;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:18.000999;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:19.000000;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:19.000000;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:19.000021;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;10:42:19.000079;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;10:42:19.000097;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:19.000097;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:20.000151;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:20.000151;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:20.000182;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:20.000182;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:20.000453;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:20.000453;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:20.000454;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:20.000454;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:20.000502;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;10:42:20.000502;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;10:42:20.000611;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:20.000611;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;10:42:20.000611;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;10:42:20.000611;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:43.000581;DEBUG;s_manage_zyre_incoming;<-Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF) exited
+BULLSHIT;03/11/2025;11:00:43.000581;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:43.000581;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;11:00:43.000581;DEBUG;s_manage_zyre_incoming;<-Whiteboard (B923B2C4555F0644AB071A7850769B22) exited
+BULLSHIT;03/11/2025;11:00:43.000581;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:00:43.000581;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;11:00:43.000597;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;11:00:43.000613;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;11:00:43.000613;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;11:00:43.000613;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:00:43.000613;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:00:43.000613;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:00:43.000613;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id B923B2C4555F0644AB071A7850769B22 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://B923B2C4555F0644AB071A7850769B22
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;11:00:43.000888;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:00:44.000436;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;11:00:44.000451;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:00:44.000451;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:00:44.000732;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:00:44.000732;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:00:44.000795;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:00:44.000795;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS
+BULLSHIT;03/11/2025;11:00:44.000795;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;11:00:44.000795;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:44.000795;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:44.000920;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:44.000920;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:44.000920;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:44.000936;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:44.000998;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:44.000998;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000061;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000061;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000061;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000061;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000061;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:00:45.000154;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:00:45.000254;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000254;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000254;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000254;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000285;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000301;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000301;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000301;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000348;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000348;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000363;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000363;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000473;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000473;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000473;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:00:45.000473;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:00:45.000473;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:00:45.000520;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:29:35.000836;DEBUG;s_manage_zyre_incoming;<-Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF) exited
+BULLSHIT;03/11/2025;11:29:35.000836;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:35.000836;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;11:29:35.000836;DEBUG;s_manage_zyre_incoming;<-Whiteboard (B923B2C4555F0644AB071A7850769B22) exited
+BULLSHIT;03/11/2025;11:29:35.000836;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;11:29:35.000852;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:29:35.000867;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:29:35.000883;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:29:36.000178;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id B923B2C4555F0644AB071A7850769B22 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;11:29:36.000178;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;11:29:36.000178;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://B923B2C4555F0644AB071A7850769B22
+BULLSHIT;03/11/2025;11:29:36.000178;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;11:29:36.000178;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;11:29:36.000274;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;11:29:36.000274;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;11:29:36.000290;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:29:36.000498;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;11:29:36.000498;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:29:36.000498;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:29:36.000920;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:29:37.000095;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:29:37.000429;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:29:37.000569;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS
+BULLSHIT;03/11/2025;11:29:37.000694;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;11:29:37.000694;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:37.000694;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:37.000694;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:37.000694;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:37.000694;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:37.000694;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:37.000975;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:29:37.000975;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:29:37.000975;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:37.000975;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:37.000975;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:37.000975;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:38.000854;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:38.000854;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:38.000854;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:38.000854;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000097;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000097;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000097;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000097;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000144;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000144;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000210;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000211;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000212;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000212;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000213;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000213;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000214;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000215;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000216;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:29:39.000217;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000217;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000218;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:29:39.000218;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:29:39.000219;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:38:06.000002;DEBUG;s_manage_zyre_incoming;<-Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF) exited
+BULLSHIT;03/11/2025;11:38:06.000002;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:06.000002;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;11:38:06.000002;DEBUG;s_manage_zyre_incoming;<-Whiteboard (B923B2C4555F0644AB071A7850769B22) exited
+BULLSHIT;03/11/2025;11:38:06.000002;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:38:06.000002;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:38:06.000033;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id B923B2C4555F0644AB071A7850769B22 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://B923B2C4555F0644AB071A7850769B22
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;11:38:06.000049;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;11:38:06.000064;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;11:38:06.000064;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;11:38:06.000064;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;11:38:06.000064;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:38:06.000829;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;11:38:06.000829;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:38:06.000829;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;11:38:06.000862;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:38:07.000035;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:38:07.000212;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:38:07.000236;DEBUG;s_manage_zyre_incoming;-Ingescape Circle has left Whiteboard-IGS
+BULLSHIT;03/11/2025;11:38:07.000314;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;11:38:07.000314;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000314;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000814;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000814;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000814;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000814;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000845;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000845;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000877;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000877;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000877;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000877;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000877;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000877;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000892;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;11:38:07.000892;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;11:38:07.000924;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000924;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:07.000924;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:07.000924;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:08.000284;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:08.000284;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:08.000284;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:08.000284;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:08.000284;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;11:38:08.000299;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;11:38:08.000315;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:08.000315;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;11:38:08.000315;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;11:38:08.000315;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000672;DEBUG;s_manage_zyre_incoming;<-Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF) exited
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;<-Whiteboard (B923B2C4555F0644AB071A7850769B22) exited
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 4AAFC47C2783844E8EA8BB6FD58C9DAF and endpoint tcp://172.17.202.80:49157
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://4AAFC47C2783844E8EA8BB6FD58C9DAF
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;12:15:49.000744;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id B923B2C4555F0644AB071A7850769B22 and endpoint tcp://172.17.202.80:49160
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://B923B2C4555F0644AB071A7850769B22
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	logger -> 49159
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	publisher -> 49158
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;12:15:49.000760;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;12:15:49.000788;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;12:15:49.000788;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;12:15:49.000788;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;12:15:49.000789;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;12:15:49.000793;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;12:15:49.000793;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000794;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000875;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;12:15:49.000875;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;12:15:49.000876;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;12:15:49.000876;DEBUG;s_manage_zyre_incoming;<-Whiteboard (B923B2C4555F0644AB071A7850769B22) exited
+BULLSHIT;03/11/2025;12:15:49.000876;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;12:15:49.000876;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (B923B2C4555F0644AB071A7850769B22)
+BULLSHIT;03/11/2025;12:15:49.000950;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;12:15:49.000950;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000951;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;12:15:49.000951;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000951;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;12:15:49.000951;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000951;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;12:15:49.000951;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000960;DEBUG;s_manage_zyre_incoming;<-Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF) exited
+BULLSHIT;03/11/2025;12:15:49.000960;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;12:15:49.000962;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (4AAFC47C2783844E8EA8BB6FD58C9DAF)
+BULLSHIT;03/11/2025;13:33:55.000487;DEBUG;s_manage_zyre_incoming;<- (235022D17FA6C945B108B2C61DE80E27) exited
+BULLSHIT;03/11/2025;13:34:04.000565;DEBUG;s_manage_zyre_incoming;<- (235022D17FA6C945B108B2C61DE80E27) exited
+BULLSHIT;03/11/2025;13:34:04.000565;DEBUG;s_manage_zyre_incoming;<- (C7E014183EDBF44BAF8DF6D610F7DC99) exited
+BULLSHIT;03/11/2025;13:34:13.000674;DEBUG;s_manage_zyre_incoming;<- (235022D17FA6C945B108B2C61DE80E27) exited
+BULLSHIT;03/11/2025;13:34:13.000676;DEBUG;s_manage_zyre_incoming;<- (C7E014183EDBF44BAF8DF6D610F7DC99) exited
+BULLSHIT;03/11/2025;13:34:22.000781;DEBUG;s_manage_zyre_incoming;<- (235022D17FA6C945B108B2C61DE80E27) exited
+BULLSHIT;03/11/2025;13:34:22.000781;DEBUG;s_manage_zyre_incoming;<- (C7E014183EDBF44BAF8DF6D610F7DC99) exited
+BULLSHIT;03/11/2025;13:34:26.000380;DEBUG;s_manage_zyre_incoming;<- (235022D17FA6C945B108B2C61DE80E27) exited
+BULLSHIT;03/11/2025;13:34:26.000446;DEBUG;s_manage_zyre_incoming;<- (C7E014183EDBF44BAF8DF6D610F7DC99) exited
+BULLSHIT;03/11/2025;13:35:37.000336;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:35:42.000384;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:35:46.000441;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:35:51.000471;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:35:55.000479;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:36:00.000545;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:36:04.000602;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:36:09.000659;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:36:13.000701;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:36:18.000729;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:36:22.000753;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:36:27.000805;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:36:31.000861;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:36:36.000936;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:36:40.000960;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:36:46.000026;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:36:50.000049;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:36:55.000076;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:36:59.000092;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:37:04.000133;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:37:08.000157;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:37:13.000205;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:37:17.000228;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:37:22.000268;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:37:26.000297;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:37:31.000325;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:37:34.000370;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:37:40.000432;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:37:42.000446;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:37:49.000509;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:37:51.000518;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:37:57.000581;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:38:00.000628;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:38:05.000688;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:38:09.000725;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:38:13.000761;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:38:18.000808;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:38:21.000813;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:38:27.000868;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:38:30.000877;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:38:36.000945;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:38:39.000970;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:38:46.000043;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:38:49.000081;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:38:55.000115;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:38:58.000123;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:39:04.000166;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:39:07.000197;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:39:13.000260;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:39:16.000300;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:39:22.000358;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:39:25.000403;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:39:31.000472;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:39:34.000501;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:39:40.000567;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:39:43.000597;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:39:49.000657;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:39:52.000682;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:39:58.000729;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:40:01.000755;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:40:07.000815;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:40:10.000850;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:40:16.000932;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:40:19.000966;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:40:26.000050;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:40:29.000067;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:40:35.000135;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:40:38.000157;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:40:44.000209;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:40:47.000226;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:40:53.000257;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:40:56.000290;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:41:02.000334;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:41:05.000365;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:41:11.000426;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:41:14.000451;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:41:20.000494;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:41:23.000522;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:41:29.000570;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:41:32.000594;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:41:38.000653;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:41:41.000679;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:41:47.000740;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:41:50.000767;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:41:56.000800;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:41:59.000830;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:42:05.000895;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:42:08.000912;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:42:14.000977;DEBUG;s_manage_zyre_incoming;<- (1F233E796D53C746A82F295485CDE5F5) exited
+BULLSHIT;03/11/2025;13:42:17.000994;DEBUG;s_manage_zyre_incoming;<- (757C811805F3D1419FE05F2A2D99B92D) exited
+BULLSHIT;03/11/2025;13:42:19.000317;DEBUG;s_run_loop;loop stopping...
+BULLSHIT;03/11/2025;13:42:19.000317;DEBUG;s_run_loop;cleaning network stack...
+BULLSHIT;03/11/2025;13:42:19.000335;DEBUG;s_run_loop;cleaning internall communication stack...
+BULLSHIT;03/11/2025;13:42:19.000335;DEBUG;s_run_loop;cleaning network structures...
+BULLSHIT;03/11/2025;13:42:19.000335;DEBUG;s_run_loop;loop stopped
+BULLSHIT;03/11/2025;13:42:19.000336;DEBUG;igs_stop;calling zsys_shutdown
+BULLSHIT;03/11/2025;13:42:19.000340;INFO;igs_stop;ingescape stopped properly
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT Wi-Fi 5670
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;13:42:21.000424;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;13:42:21.000448;INFO;igs_start_with_device;Starting with ip address 172.17.192.93 and port 5670 on device Wi-Fi
+BULLSHIT;03/11/2025;13:42:21.000448;DEBUG;s_init_loop;loop init
+BULLSHIT;03/11/2025;13:42:21.000572;DEBUG;s_run_loop;loop starting
+BULLSHIT;03/11/2025;13:42:21.000646;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 1F233E796D53C746A82F295485CDE5F5 and endpoint tcp://172.17.192.93:49154
+BULLSHIT;03/11/2025;13:42:21.000650;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (1F233E796D53C746A82F295485CDE5F5)
+BULLSHIT;03/11/2025;13:42:21.000650;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://1F233E796D53C746A82F295485CDE5F5
+BULLSHIT;03/11/2025;13:42:21.000650;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;13:42:21.000651;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;13:42:21.000651;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;13:42:21.000651;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;13:42:21.000651;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;13:42:21.000652;DEBUG;s_manage_zyre_incoming;	logger -> 49153
+BULLSHIT;03/11/2025;13:42:21.000652;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;13:42:21.000652;DEBUG;s_manage_zyre_incoming;	publisher -> 49152
+BULLSHIT;03/11/2025;13:42:21.000653;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;13:42:21.000653;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;13:42:21.000655;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;13:42:21.000657;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;13:42:21.000657;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;13:42:21.000657;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;13:42:21.000657;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;13:42:21.000657;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;13:42:21.000658;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;13:42:21.000658;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id 757C811805F3D1419FE05F2A2D99B92D and endpoint tcp://172.17.192.93:49157
+BULLSHIT;03/11/2025;13:42:21.000658;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (757C811805F3D1419FE05F2A2D99B92D)
+BULLSHIT;03/11/2025;13:42:21.000658;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://757C811805F3D1419FE05F2A2D99B92D
+BULLSHIT;03/11/2025;13:42:21.000659;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;13:42:21.000659;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;13:42:21.000660;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;13:42:21.000672;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;13:42:21.000672;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;13:42:21.000672;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;13:42:21.000674;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;13:42:21.000674;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;13:42:21.000675;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;13:42:21.000683;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;13:42:21.000683;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;13:42:22.000044;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;13:42:22.000044;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;13:42:22.000044;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;13:42:22.000044;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;13:42:38.000194;DEBUG;model_write;set output player_turn to string alice
+BULLSHIT;03/11/2025;13:42:38.000194;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes player_turn string (6 bytes)
+BULLSHIT;03/11/2025;13:42:38.000195;DEBUG;model_write;set output game_state to string STARTED
+BULLSHIT;03/11/2025;13:42:38.000195;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes game_state string (8 bytes)
+BULLSHIT;03/11/2025;13:42:38.000196;DEBUG;model_write;set output last_action to string Game started: alice,bob\n
+BULLSHIT;03/11/2025;13:42:38.000196;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes last_action string (25 bytes)
+BULLSHIT;03/11/2025;13:42:39.000628;DEBUG;model_write;set output player_turn to string bob\n
+BULLSHIT;03/11/2025;13:42:39.000628;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes player_turn string (5 bytes)
+BULLSHIT;03/11/2025;13:42:39.000628;DEBUG;model_write;set output last_action to string 🎴 alice claims: as
+BULLSHIT;03/11/2025;13:42:39.000629;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes last_action string (22 bytes)
+BULLSHIT;03/11/2025;13:42:41.000358;DEBUG;model_write;set output winner to string alice
+BULLSHIT;03/11/2025;13:42:41.000358;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes winner string (6 bytes)
+BULLSHIT;03/11/2025;13:42:41.000359;DEBUG;model_write;set output game_state to string FINISHED
+BULLSHIT;03/11/2025;13:42:41.000360;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes game_state string (9 bytes)
+BULLSHIT;03/11/2025;13:42:41.000360;DEBUG;model_write;set output last_action to string ✅ Wrong call! alice was honest!
+BULLSHIT;03/11/2025;13:42:41.000360;DEBUG;network_publish_output;BULLSHIT(0FA0007B18824D4DA0DB6BB688F7179F) publishes last_action string (34 bytes)
+BULLSHIT;03/11/2025;14:06:05.000855;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;14:06:05.000855;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:06:16.000457;DEBUG;s_manage_zyre_incoming;received STOP_PEER command from Ingescape Circle (1F233E796D53C746A82F295485CDE5F5)
+BULLSHIT;03/11/2025;14:06:16.000458;DEBUG;s_run_loop;loop stopping...
+BULLSHIT;03/11/2025;14:06:16.000458;DEBUG;s_run_loop;cleaning network stack...
+BULLSHIT;03/11/2025;14:06:16.000468;DEBUG;s_run_loop;cleaning internall communication stack...
+BULLSHIT;03/11/2025;14:06:16.000468;DEBUG;s_run_loop;cleaning network structures...
+BULLSHIT;03/11/2025;14:06:16.000468;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Ingescape Circle (9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:06:16.000468;DEBUG;s_clean_and_free_remote_agent;cleaning remote agent Whiteboard (2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:06:16.000468;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Whiteboard (757C811805F3D1419FE05F2A2D99B92D)
+BULLSHIT;03/11/2025;14:06:16.000468;DEBUG;s_clean_and_free_zyre_peer;cleaning peer Ingescape Circle (1F233E796D53C746A82F295485CDE5F5)
+BULLSHIT;03/11/2025;14:06:16.000468;DEBUG;s_run_loop;loop stopped
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT Wi-Fi 5670
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;14:33:53.000321;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;14:33:53.000331;INFO;igs_start_with_device;Starting with ip address 172.17.192.93 and port 5670 on device Wi-Fi
+BULLSHIT;03/11/2025;14:33:53.000331;DEBUG;s_init_loop;loop init
+BULLSHIT;03/11/2025;14:33:53.000428;DEBUG;s_run_loop;loop starting
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id 757C811805F3D1419FE05F2A2D99B92D and endpoint tcp://172.17.192.93:49157
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (757C811805F3D1419FE05F2A2D99B92D)
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://757C811805F3D1419FE05F2A2D99B92D
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;14:33:53.000513;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;14:33:53.000518;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;14:33:53.000518;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;14:33:53.000519;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;14:33:53.000521;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;14:33:53.000521;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;14:33:53.000521;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;14:33:53.000522;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 1F233E796D53C746A82F295485CDE5F5 and endpoint tcp://172.17.192.93:49154
+BULLSHIT;03/11/2025;14:33:53.000522;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (1F233E796D53C746A82F295485CDE5F5)
+BULLSHIT;03/11/2025;14:33:53.000522;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://1F233E796D53C746A82F295485CDE5F5
+BULLSHIT;03/11/2025;14:33:53.000522;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;14:33:53.000522;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;14:33:53.000522;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;14:33:53.000522;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;14:33:53.000523;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;14:33:53.000523;DEBUG;s_manage_zyre_incoming;	logger -> 49153
+BULLSHIT;03/11/2025;14:33:53.000523;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;14:33:53.000523;DEBUG;s_manage_zyre_incoming;	publisher -> 49152
+BULLSHIT;03/11/2025;14:33:53.000523;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;14:33:53.000523;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;14:33:53.000526;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;14:33:53.000526;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;14:33:53.000526;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;14:33:53.000527;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;14:33:53.000528;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;14:33:53.000529;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;14:33:53.000529;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;14:33:53.000531;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;14:33:53.000531;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:33:53.000531;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:33:53.000531;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;14:33:53.000531;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:33:53.000531;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:33:53.000545;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;14:33:53.000545;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;14:33:54.000024;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;14:33:54.000025;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:33:54.000025;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;14:33:54.000026;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT Wi-Fi 5670
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;14:40:47.000409;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;14:40:47.000423;INFO;igs_start_with_device;Starting with ip address 172.17.192.93 and port 5670 on device Wi-Fi
+BULLSHIT;03/11/2025;14:40:47.000423;DEBUG;s_init_loop;loop init
+BULLSHIT;03/11/2025;14:40:47.000533;DEBUG;s_run_loop;loop starting
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 1F233E796D53C746A82F295485CDE5F5 and endpoint tcp://172.17.192.93:49154
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (1F233E796D53C746A82F295485CDE5F5)
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://1F233E796D53C746A82F295485CDE5F5
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;14:40:47.000601;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;14:40:47.000611;DEBUG;s_manage_zyre_incoming;	logger -> 49153
+BULLSHIT;03/11/2025;14:40:47.000611;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;14:40:47.000611;DEBUG;s_manage_zyre_incoming;	publisher -> 49152
+BULLSHIT;03/11/2025;14:40:47.000611;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;14:40:47.000611;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;14:40:47.000611;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;14:40:47.000611;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;14:40:47.000614;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;14:40:47.000614;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;14:40:47.000615;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;14:40:47.000615;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;14:40:47.000615;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id 757C811805F3D1419FE05F2A2D99B92D and endpoint tcp://172.17.192.93:49157
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (757C811805F3D1419FE05F2A2D99B92D)
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://757C811805F3D1419FE05F2A2D99B92D
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;14:40:47.000616;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;14:40:47.000622;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;14:40:47.000623;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;14:40:47.000624;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;14:40:47.000624;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;14:40:47.000624;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;14:40:47.000625;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:40:47.000625;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:40:47.000627;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;14:40:47.000627;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:40:47.000627;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:40:47.000631;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;14:40:47.000631;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;14:40:48.000049;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;14:40:48.000049;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:40:48.000049;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;14:40:48.000049;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;igs_set_command_line;Command line set to C:\Users\HP\AppData\Local\Programs\Python\Python312\python.exe C:\Users\HP\Documents\Ingescape\sandbox\BULLSHIT\main.py BULLSHIT Wi-Fi 5670
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;main;Ingescape version: 40500 (protocol v5)
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set input cards_played to data | size: 0 bytes
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set input bullshit_called to bool 0
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set input claimed_card to null string
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set input current_player to null string
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set output last_action to null string
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set output player_turn to null string
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set output winner to null string
+BULLSHIT;03/11/2025;14:44:49.000427;DEBUG;model_write;set output game_state to null string
+BULLSHIT;03/11/2025;14:44:49.000440;INFO;igs_start_with_device;Starting with ip address 172.17.192.93 and port 5670 on device Wi-Fi
+BULLSHIT;03/11/2025;14:44:49.000440;DEBUG;s_init_loop;loop init
+BULLSHIT;03/11/2025;14:44:49.000550;DEBUG;s_run_loop;loop starting
+BULLSHIT;03/11/2025;14:44:49.000640;DEBUG;s_manage_zyre_incoming;->Whiteboard has entered the network with peer id 757C811805F3D1419FE05F2A2D99B92D and endpoint tcp://172.17.192.93:49157
+BULLSHIT;03/11/2025;14:44:49.000640;DEBUG;s_manage_zyre_incoming;Handling headers for peer Whiteboard (757C811805F3D1419FE05F2A2D99B92D)
+BULLSHIT;03/11/2025;14:44:49.000640;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://757C811805F3D1419FE05F2A2D99B92D
+BULLSHIT;03/11/2025;14:44:49.000643;DEBUG;s_manage_zyre_incoming;	pid -> 13392
+BULLSHIT;03/11/2025;14:44:49.000643;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.exe"
+BULLSHIT;03/11/2025;14:44:49.000643;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;14:44:49.000643;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49154
+BULLSHIT;03/11/2025;14:44:49.000644;DEBUG;s_manage_zyre_incoming;	logger -> 49156
+BULLSHIT;03/11/2025;14:44:49.000644;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;14:44:49.000644;DEBUG;s_manage_zyre_incoming;	publisher -> 49155
+BULLSHIT;03/11/2025;14:44:49.000644;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;14:44:49.000644;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49154 to subscribe to Whiteboard
+BULLSHIT;03/11/2025;14:44:49.000646;DEBUG;s_manage_zyre_incoming;Subscription created for Whiteboard at tcp://127.0.0.1:49154 (ipc)
+BULLSHIT;03/11/2025;14:44:49.000646;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;14:44:49.000647;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS-REPLAY
+BULLSHIT;03/11/2025;14:44:49.000647;DEBUG;s_manage_zyre_incoming;+Whiteboard has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;14:44:49.000648;DEBUG;s_manage_zyre_incoming;->Ingescape Circle has entered the network with peer id 1F233E796D53C746A82F295485CDE5F5 and endpoint tcp://172.17.192.93:49154
+BULLSHIT;03/11/2025;14:44:49.000648;DEBUG;s_manage_zyre_incoming;Handling headers for peer Ingescape Circle (1F233E796D53C746A82F295485CDE5F5)
+BULLSHIT;03/11/2025;14:44:49.000648;DEBUG;s_manage_zyre_incoming;	inproc -> inproc://1F233E796D53C746A82F295485CDE5F5
+BULLSHIT;03/11/2025;14:44:49.000648;DEBUG;s_manage_zyre_incoming;	pid -> 20956
+BULLSHIT;03/11/2025;14:44:49.000648;DEBUG;s_manage_zyre_incoming;	commandline -> "C:\Program Files\Ingescape\Ingescape Circle v4\Ingescape-Circle.exe" "C:\Users\HP\Desktop\Whiteboard.win64 (1)\Whiteboard-win64\Whiteboard.lib"
+BULLSHIT;03/11/2025;14:44:49.000648;DEBUG;s_manage_zyre_incoming;	protocol -> v5
+BULLSHIT;03/11/2025;14:44:49.000649;DEBUG;s_manage_zyre_incoming;	isCircle -> 1
+BULLSHIT;03/11/2025;14:44:49.000649;DEBUG;s_manage_zyre_incoming;	loopback -> tcp://127.0.0.1:49153
+BULLSHIT;03/11/2025;14:44:49.000649;DEBUG;s_manage_zyre_incoming;	logger -> 49153
+BULLSHIT;03/11/2025;14:44:49.000649;DEBUG;s_manage_zyre_incoming;	ingescape -> v4.5.0
+BULLSHIT;03/11/2025;14:44:49.000649;DEBUG;s_manage_zyre_incoming;	publisher -> 49152
+BULLSHIT;03/11/2025;14:44:49.000649;DEBUG;s_manage_zyre_incoming;	hostname -> DESKTOP-MRTK5NU
+BULLSHIT;03/11/2025;14:44:49.000649;DEBUG;s_manage_zyre_incoming;Use address tcp://127.0.0.1:49153 to subscribe to Ingescape Circle
+BULLSHIT;03/11/2025;14:44:49.000653;DEBUG;s_manage_zyre_incoming;Subscription created for Ingescape Circle at tcp://127.0.0.1:49153 (ipc)
+BULLSHIT;03/11/2025;14:44:49.000654;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined INGESCAPE_PRIVATE
+BULLSHIT;03/11/2025;14:44:49.000654;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined \o/ Ingescape-Circles
+BULLSHIT;03/11/2025;14:44:49.000654;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS-REPLAY
+BULLSHIT;03/11/2025;14:44:49.000654;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Ingescape Circle-IGS
+BULLSHIT;03/11/2025;14:44:49.000655;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS-CALLS
+BULLSHIT;03/11/2025;14:44:49.000655;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined Whiteboard-IGS
+BULLSHIT;03/11/2025;14:44:49.000656;DEBUG;s_manage_zyre_incoming;registering agent 2387AF0C7560E34385E9BD797A82E22F(Whiteboard)
+BULLSHIT;03/11/2025;14:44:49.000656;DEBUG;s_manage_zyre_incoming;store definition for remote agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:44:49.000656;DEBUG;s_manage_zyre_incoming;store mapping for agent Whiteboard(2387AF0C7560E34385E9BD797A82E22F)
+BULLSHIT;03/11/2025;14:44:49.000658;DEBUG;s_manage_zyre_incoming;registering agent 9C4E4FDCF75B0A42AD4A6C45F56DABC1(Ingescape Circle)
+BULLSHIT;03/11/2025;14:44:49.000658;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:44:49.000658;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:44:49.000665;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS-CALLS
+BULLSHIT;03/11/2025;14:44:49.000666;DEBUG;s_manage_zyre_incoming;+Ingescape Circle has joined BULLSHIT-IGS
+BULLSHIT;03/11/2025;14:44:50.000018;DEBUG;s_manage_zyre_incoming;Definition already exists for remote agent Ingescape Circle : new definition will overwrite the previous one...
+BULLSHIT;03/11/2025;14:44:50.000018;DEBUG;s_manage_zyre_incoming;store definition for remote agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
+BULLSHIT;03/11/2025;14:44:50.000019;DEBUG;s_manage_zyre_incoming;mapping already exists for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1) : new mapping will overwrite the previous one...
+BULLSHIT;03/11/2025;14:44:50.000019;DEBUG;s_manage_zyre_incoming;store mapping for agent Ingescape Circle(9C4E4FDCF75B0A42AD4A6C45F56DABC1)
