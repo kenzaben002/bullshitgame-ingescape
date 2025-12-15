@@ -51,13 +51,20 @@
 ## 🚀 Quick Start
 
 (make sure you are in the right path everytime )
-# 1. Install dependencies
-# 2. Launch the game
-    -open a terminal 1:python main.py game_engine "network" port
-    -open a terminal 2:python main.py graphe "network" port
-    -open whitboard.exe and connect it to the same network device and port as other agents 
-# 3. Open IngeScape to see the Whiteboard display
-    -clic on start on the Game_engine agent 
+# 1. Launch the game
+ open a terminal 1:
+
+      -cd ~\IngeScape\sandbox\Game_Engine
+      -python main.py game_engine {"network"} {port}
+  
+ open a terminal 2:
+ 
+      -cd ~\IngeScape\sandbox\graphe
+      -python main.py graphe {"network"} {port}
+      
+- open whitboard.exe and connect it to the same network device and port as other agents 
+# 2. Open IngeScape to see the Whiteboard display
+- clic on start on the Game_engine agent 
   
 ## 🎮 How to Play
 - Each player starts with 5 cards
