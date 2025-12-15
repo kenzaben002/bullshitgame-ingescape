@@ -51,7 +51,12 @@
 ## 🚀 Quick Start
 
 (make sure you are in the right path everytime )
-# 1. Launch the game
+# 1. Requirement
+
+     -pip install ingescape
+     -python -- version 
+     
+# 2. Launch the game
  open a terminal 1:
 
       -cd ~\IngeScape\sandbox\Game_Engine
@@ -63,7 +68,7 @@
       -python main.py graphe {"network"} {port}
       
 - open whitboard.exe and connect it to the same network device and port as other agents 
-# 2. Open IngeScape to see the Whiteboard display
+# 3. Open IngeScape to see the Whiteboard display
 - clic on start on the Game_engine agent 
   
 ## 🎮 How to Play
